@@ -1,0 +1,26 @@
+ &input 
+ NTYPE = 0, 
+ GSET = 0,
+  DAVCOR =10,
+ NCOREL = 15 
+ NROOT = 5
+ IVMODE = 8 
+ NBKITR = 1
+ NVBKMN = 5
+ RTOLBK = 1e-3,1e-3,1e-3,1e-3,1e-3,
+ NITER = 2000
+ NVCIMN = 7
+ RTOLCI = 1e-3,1e-3,1e-3,1e-3,1e-3,
+ NVCIMX = 10
+ NVRFMX = 10
+ NVBKMX = 10
+ IDEN  = 1 
+ CSFPRN = 10, 
+ FINALV = 0
+ FINALW =-1
+ CDG4EX =1, C2EX0EX=0,C3EX1EX=0 
+ NSEG0X = 4,8,1,1,
+ NSEG1X = 3,8,1,1,
+ NSEG2X = 3,6,1,1,
+ MAXSEG = 14
+/&end

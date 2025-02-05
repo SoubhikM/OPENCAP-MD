@@ -1,0 +1,15 @@
+wfoverlap /home/sbkmdl/sharc_test/sharc-master/source/../bin/wfoverlap.x
+# wf-overlap binary
+
+memory 240000
+# Total memory available
+
+ncpu  16
+# Total cpu available
+
+optimizer optking
+# optimizer chosen optking (symmetry)
+
+inputdir /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/colfiles
+# Input files for COLUMBUS run (If inputdir is absent, default is copyfiles/ directory
+# in the working directory)

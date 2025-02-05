@@ -1,0 +1,44 @@
+basis cc-pvtz-3p
+## Basis set chosen (in openmolcas-library format)
+## In this example this is not a standard basis set available in molcas library
+
+BASLIB /projectnb/kbravgrp/soubhikm/OPENCAP-MD/ethene/SA15-3e20o-CCT3PA/QM/
+## Basis file location for openmolcas input file if default basis set is not used
+
+ras2 20
+## CAS size
+
+nactel 3
+## No. Of active electrons
+
+inactive 7
+## Inactive orbitals
+
+roots 15
+## Total no. of SA roots
+
+charge -1
+## Charge of the system
+
+CAP_ETA 1771.25
+## Fixed eta value
+
+act_states 3
+## Active state to follow
+
+cap_x 7.62
+cap_y 4.20
+cap_z 6.02
+## CAP onset along all directions
+
+calc_neutral
+## Calculate neutral energy (if absent, take lowest root as a dummy neutral energy)
+
+track_all
+## Use RASSI module of openmolcas to calculate WF-OVERLAP
+## Other option is `track_wfoverlap'
+
+natorb
+## Print natural orbitals (real part of complex density)
+## Need OPENCAPMD.gbs basis file in pyscf format in QM/ directory
+

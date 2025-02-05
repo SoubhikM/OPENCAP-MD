@@ -1,0 +1,697 @@
+
+
+*** Tracking is done by 'dens' and symmetry is True
+
+
+===> Scratch directory path: /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_0
+
+**Warning**
+  Not rotating the given geom, rotmax is diagonal with element 1 !
+
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_0	2025-01-17 11:46:09.069732 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_0	2025-01-17 11:46:52.396253	Runtime: 0:00:43.326521	Error Code: 0
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_0/ANION	2025-01-17 11:46:55.912720 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_0/ANION	2025-01-17 11:49:08.732580	Runtime: 0:02:12.819860	Error Code: 0
+
+
+----------------------------------------Starting parallel gradient and coupling calculation----------------------------------------
+
+
+::::: Scratchdir set to /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch :::::
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 11:49:20.654763 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 11:49:20.655177 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 11:49:20.655604 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 11:49:20.656130 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 11:49:20.656414 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 11:49:20.656876 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 11:49:20.657914 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 11:49:20.658462 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 11:49:20.659011 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 11:49:20.660167 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 11:49:20.660138 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 11:49:20.660404 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 11:49:20.660647 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 11:49:20.660203 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 11:49:20.661176 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 11:50:37.561701	Runtime: 0:01:16.901563	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 11:50:37.779048	Runtime: 0:01:17.120037	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 11:50:37.779292	Runtime: 0:01:17.119125	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 11:50:37.784069	Runtime: 0:01:17.127655	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 11:51:04.403227	Runtime: 0:01:43.746351	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 11:51:13.156736	Runtime: 0:01:52.496089	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 11:51:13.171491	Runtime: 0:01:52.510315	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 11:51:15.689085	Runtime: 0:01:55.028882	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 11:51:17.693890	Runtime: 0:01:57.039127	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 11:51:21.251729	Runtime: 0:02:00.596125	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 11:51:21.472183	Runtime: 0:02:00.817006	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 11:51:32.561817	Runtime: 0:02:11.901413	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 11:51:32.750634	Runtime: 0:02:12.092720	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 11:51:43.561643	Runtime: 0:02:22.903181	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 11:51:46.816375	Runtime: 0:02:26.160245	Error Code: [0, 0, 0, 0, 0]
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_0/NEUTRAL	2025-01-17 11:51:49.234755 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_0/NEUTRAL	2025-01-17 11:52:04.111736	Runtime: 0:00:14.876981	Error Code: 0
+
+Density files are read from path: 
+ /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_0/CAP_INPS 
+
+Ref energy : -109.111007303917
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating CAP matrix via OpenCAP driver. 
+Calculating CAP matrix in AO basis using 16 threads.
+Radial precision: 1.00e-16 Angular points: 590
+Integration time:1.065173
+
+|==================== End of OpenCAP run (1.077752 Seconds). ====================|
+
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating gradient contribution from CAP via OpenCAP driver. 
+Calculating CAPG matrix (Atom: 1) in AO basis using 16 threads.
+Calculating CAPG matrix (Atom: 2) in AO basis using 16 threads.
+Integration time:4.529112
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 1).
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 2).
+Integration time:11.015925
+
+|==================== End of OpenCAP run (15.693063 Seconds). ====================|
+
+
+
+** Printing natural orbitals!
+
+
+
+CAP gradients (Hartree/Bohr) of resonance state
+
++------+-----------+-----------+-----------+
+| Atom |         X |         Y |         Z |
++------+-----------+-----------+-----------+
+|    N | -0.000000 | -0.000000 |  0.001404 |
+|    N |  0.000000 |  0.000000 | -0.001404 |
++------+-----------+-----------+-----------+
+
+
+===> Scratch directory path: /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_1
+
+**Warning**
+  Not rotating the given geom, rotmax is diagonal with element 1 !
+
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_1	2025-01-17 11:52:25.749722 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_1	2025-01-17 11:52:40.087310	Runtime: 0:00:14.337588	Error Code: 0
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_1/ANION	2025-01-17 11:52:43.467088 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_1/ANION	2025-01-17 12:11:50.186983	Runtime: 0:19:06.719895	Error Code: 0
+
+
+----------------------------------------Starting parallel gradient and coupling calculation----------------------------------------
+
+
+::::: Scratchdir set to /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch :::::
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 12:12:02.122488 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 12:12:02.141594 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 12:12:02.153724 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 12:12:02.168296 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 12:12:02.182420 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 12:12:02.195063 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 12:12:02.207926 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 12:12:02.218402 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 12:12:02.231117 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 12:12:02.244236 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 12:12:02.257394 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 12:12:02.268933 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 12:12:02.281486 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 12:12:02.293688 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 12:12:02.305885 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 12:13:53.184843	Runtime: 0:01:50.989780	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 12:13:53.186341	Runtime: 0:01:51.063853	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 12:13:53.204351	Runtime: 0:01:50.898466	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 12:14:01.971117	Runtime: 0:01:59.788697	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 12:14:01.974797	Runtime: 0:01:59.766871	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 12:14:01.976916	Runtime: 0:01:59.683228	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 12:14:01.978505	Runtime: 0:01:59.836911	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 12:14:01.981530	Runtime: 0:01:59.712597	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 12:14:01.983614	Runtime: 0:01:59.829890	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 12:14:01.988815	Runtime: 0:01:59.820519	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 12:14:13.584168	Runtime: 0:02:11.339932	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 12:14:13.753525	Runtime: 0:02:11.472039	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 12:14:15.889344	Runtime: 0:02:13.658227	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 12:14:22.260399	Runtime: 0:02:20.003005	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 12:14:25.588759	Runtime: 0:02:23.370357	Error Code: [0, 0, 0, 0, 0]
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_1/NEUTRAL	2025-01-17 12:14:29.296021 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_1/NEUTRAL	2025-01-17 12:14:45.407975	Runtime: 0:00:16.111954	Error Code: 0
+
+Density files are read from path: 
+ /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_1/CAP_INPS 
+
+Ref energy : -109.135288187296
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating CAP matrix via OpenCAP driver. 
+Calculating CAP matrix in AO basis using 16 threads.
+Radial precision: 1.00e-16 Angular points: 590
+Integration time:1.054777
+
+|==================== End of OpenCAP run (1.067105 Seconds). ====================|
+
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating gradient contribution from CAP via OpenCAP driver. 
+Calculating CAPG matrix (Atom: 1) in AO basis using 16 threads.
+Calculating CAPG matrix (Atom: 2) in AO basis using 16 threads.
+Integration time:4.488271
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 1).
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 2).
+Integration time:10.887260
+
+|==================== End of OpenCAP run (15.539287 Seconds). ====================|
+
+
+
+** Printing natural orbitals!
+
+
+
+CAP gradients (Hartree/Bohr) of resonance state
+
++------+----------+-----------+-----------+
+| Atom |        X |         Y |         Z |
++------+----------+-----------+-----------+
+|    N | 0.000000 | -0.000000 |  0.001978 |
+|    N | 0.000000 |  0.000000 | -0.001978 |
++------+----------+-----------+-----------+
+
+
+===> Scratch directory path: /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_2
+
+**Warning**
+  Not rotating the given geom, rotmax is diagonal with element 1 !
+
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_2	2025-01-17 12:15:06.412180 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_2	2025-01-17 12:15:15.956607	Runtime: 0:00:09.544427	Error Code: 0
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_2/ANION	2025-01-17 12:15:19.343442 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_2/ANION	2025-01-17 12:21:44.199286	Runtime: 0:06:24.855844	Error Code: 0
+
+
+----------------------------------------Starting parallel gradient and coupling calculation----------------------------------------
+
+
+::::: Scratchdir set to /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch :::::
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 12:21:56.176182 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 12:21:56.188559 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 12:21:56.208734 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 12:21:56.221124 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 12:21:56.235728 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 12:21:56.250107 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 12:21:56.266254 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 12:21:56.279875 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 12:21:56.291900 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 12:21:56.305752 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 12:21:56.318229 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 12:21:56.330141 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 12:21:56.343947 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 12:21:56.356055 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 12:21:56.370422 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 12:24:03.970238	Runtime: 0:02:07.626291	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 12:24:08.895003	Runtime: 0:02:12.718821	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 12:24:09.796093	Runtime: 0:02:13.425671	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 12:24:18.041316	Runtime: 0:02:21.791209	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 12:24:18.499910	Runtime: 0:02:22.194158	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 12:24:18.894435	Runtime: 0:02:22.658707	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 12:24:18.894931	Runtime: 0:02:22.706372	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 12:24:18.895329	Runtime: 0:02:22.539274	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 12:24:18.895541	Runtime: 0:02:22.686807	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 12:24:18.972644	Runtime: 0:02:22.680744	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 12:24:18.975482	Runtime: 0:02:22.754358	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 12:24:19.016273	Runtime: 0:02:22.736398	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 12:24:19.017184	Runtime: 0:02:22.687043	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 12:24:19.029950	Runtime: 0:02:22.711721	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 12:24:19.035920	Runtime: 0:02:22.769666	Error Code: [0, 0, 0, 0, 0]
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_2/NEUTRAL	2025-01-17 12:24:22.669592 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_2/NEUTRAL	2025-01-17 12:24:38.783823	Runtime: 0:00:16.114231	Error Code: 0
+
+Density files are read from path: 
+ /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_2/CAP_INPS 
+
+Ref energy : -109.127519396102
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating CAP matrix via OpenCAP driver. 
+Calculating CAP matrix in AO basis using 16 threads.
+Radial precision: 1.00e-16 Angular points: 590
+Integration time:1.006145
+
+|==================== End of OpenCAP run (1.018451 Seconds). ====================|
+
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating gradient contribution from CAP via OpenCAP driver. 
+Calculating CAPG matrix (Atom: 1) in AO basis using 16 threads.
+Calculating CAPG matrix (Atom: 2) in AO basis using 16 threads.
+Integration time:4.439811
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 1).
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 2).
+Integration time:10.879613
+
+|==================== End of OpenCAP run (15.503722 Seconds). ====================|
+
+
+
+** Printing natural orbitals!
+
+
+
+CAP gradients (Hartree/Bohr) of resonance state
+
++------+-----------+-----------+-----------+
+| Atom |         X |         Y |         Z |
++------+-----------+-----------+-----------+
+|    N |  0.000000 | -0.000000 |  0.001820 |
+|    N | -0.000000 |  0.000000 | -0.001820 |
++------+-----------+-----------+-----------+
+
+
+===> Scratch directory path: /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_3
+
+**Warning**
+  Not rotating the given geom, rotmax is diagonal with element 1 !
+
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_3	2025-01-17 12:25:00.025724 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_3	2025-01-17 12:25:09.301701	Runtime: 0:00:09.275977	Error Code: 0
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_3/ANION	2025-01-17 12:25:12.687414 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_3/ANION	2025-01-17 12:34:18.266582	Runtime: 0:09:05.579168	Error Code: 0
+
+
+----------------------------------------Starting parallel gradient and coupling calculation----------------------------------------
+
+
+::::: Scratchdir set to /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch :::::
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 12:34:30.186401 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 12:34:30.205910 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 12:34:30.220954 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 12:34:30.236047 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 12:34:30.249516 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 12:34:30.262606 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 12:34:30.275212 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 12:34:30.288192 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 12:34:30.302181 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 12:34:30.316318 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 12:34:30.329561 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 12:34:30.343306 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 12:34:30.356444 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 12:34:30.369825 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 12:34:30.383608 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 12:36:30.475313	Runtime: 0:02:00.118869	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 12:36:33.126621	Runtime: 0:02:02.864015	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 12:36:34.495057	Runtime: 0:02:04.308656	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 12:36:35.065388	Runtime: 0:02:04.681780	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 12:36:44.538478	Runtime: 0:02:14.302431	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 12:36:44.586293	Runtime: 0:02:14.380383	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 12:36:44.595494	Runtime: 0:02:14.374540	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 12:36:44.657758	Runtime: 0:02:14.408242	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 12:36:44.728713	Runtime: 0:02:14.426532	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 12:36:44.760022	Runtime: 0:02:14.471830	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 12:36:44.766637	Runtime: 0:02:14.491425	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 12:36:44.769457	Runtime: 0:02:14.439896	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 12:36:44.774489	Runtime: 0:02:14.404664	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 12:36:47.872136	Runtime: 0:02:17.528830	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 12:36:54.473802	Runtime: 0:02:24.157484	Error Code: [0, 0, 0]
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_3/NEUTRAL	2025-01-17 12:36:58.171165 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_3/NEUTRAL	2025-01-17 12:37:14.322273	Runtime: 0:00:16.151108	Error Code: 0
+
+Density files are read from path: 
+ /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_3/CAP_INPS 
+
+Ref energy : -109.125701192894
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating CAP matrix via OpenCAP driver. 
+Calculating CAP matrix in AO basis using 16 threads.
+Radial precision: 1.00e-16 Angular points: 590
+Integration time:1.046143
+
+|==================== End of OpenCAP run (1.058751 Seconds). ====================|
+
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating gradient contribution from CAP via OpenCAP driver. 
+Calculating CAPG matrix (Atom: 1) in AO basis using 16 threads.
+Calculating CAPG matrix (Atom: 2) in AO basis using 16 threads.
+Integration time:4.493441
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 1).
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 2).
+Integration time:10.878557
+
+|==================== End of OpenCAP run (15.538242 Seconds). ====================|
+
+
+
+** Printing natural orbitals!
+
+
+
+CAP gradients (Hartree/Bohr) of resonance state
+
++------+-----------+-----------+-----------+
+| Atom |         X |         Y |         Z |
++------+-----------+-----------+-----------+
+|    N | -0.000000 | -0.000000 |  0.001785 |
+|    N |  0.000000 |  0.000000 | -0.001785 |
++------+-----------+-----------+-----------+
+
+
+===> Scratch directory path: /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_4
+
+**Warning**
+  Not rotating the given geom, rotmax is diagonal with element 1 !
+
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_4	2025-01-17 12:37:36.612917 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_4	2025-01-17 12:37:44.541623	Runtime: 0:00:07.928706	Error Code: 0
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_4/ANION	2025-01-17 12:37:47.989663 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_4/ANION	2025-01-17 12:55:39.228404	Runtime: 0:17:51.238741	Error Code: 0
+
+
+----------------------------------------Starting parallel gradient and coupling calculation----------------------------------------
+
+
+::::: Scratchdir set to /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch :::::
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 12:55:51.231106 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 12:55:51.241228 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 12:55:51.255997 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 12:55:51.269579 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 12:55:51.283748 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 12:55:51.298272 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 12:55:51.314694 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 12:55:51.326518 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 12:55:51.341634 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 12:55:51.356513 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 12:55:51.369649 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 12:55:51.383421 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 12:55:51.396614 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 12:55:51.409358 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 12:55:51.422474 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 12:58:04.248061	Runtime: 0:02:13.016955	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 12:58:04.266050	Runtime: 0:02:12.843576	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 12:58:04.267296	Runtime: 0:02:12.870682	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 12:58:04.269313	Runtime: 0:02:12.971041	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 12:58:08.328693	Runtime: 0:02:17.087465	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 12:58:09.007698	Runtime: 0:02:17.723950	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 12:58:09.007947	Runtime: 0:02:17.738368	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 12:58:09.031144	Runtime: 0:02:17.775147	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 12:58:09.071688	Runtime: 0:02:17.662330	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 12:58:09.072228	Runtime: 0:02:17.745710	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 12:58:09.075526	Runtime: 0:02:17.733892	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 12:58:09.122988	Runtime: 0:02:17.808294	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 12:58:09.151267	Runtime: 0:02:17.781618	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 12:58:09.178598	Runtime: 0:02:17.795177	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 12:58:15.607881	Runtime: 0:02:24.251368	Error Code: [0, 0, 0]
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_4/NEUTRAL	2025-01-17 12:58:17.910246 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_4/NEUTRAL	2025-01-17 12:58:34.252599	Runtime: 0:00:16.342353	Error Code: 0
+
+Density files are read from path: 
+ /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_4/CAP_INPS 
+
+Ref energy : -109.125266224114
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating CAP matrix via OpenCAP driver. 
+Calculating CAP matrix in AO basis using 16 threads.
+Radial precision: 1.00e-16 Angular points: 590
+Integration time:1.051795
+
+|==================== End of OpenCAP run (1.064339 Seconds). ====================|
+
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating gradient contribution from CAP via OpenCAP driver. 
+Calculating CAPG matrix (Atom: 1) in AO basis using 16 threads.
+Calculating CAPG matrix (Atom: 2) in AO basis using 16 threads.
+Integration time:4.463319
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 1).
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 2).
+Integration time:10.852931
+
+|==================== End of OpenCAP run (15.473689 Seconds). ====================|
+
+
+
+** Printing natural orbitals!
+
+
+
+CAP gradients (Hartree/Bohr) of resonance state
+
++------+-----------+-----------+-----------+
+| Atom |         X |         Y |         Z |
++------+-----------+-----------+-----------+
+|    N | -0.000000 |  0.000000 |  0.001776 |
+|    N |  0.000000 | -0.000000 | -0.001776 |
++------+-----------+-----------+-----------+
+
+
+===> Scratch directory path: /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_5
+
+**Warning**
+  Not rotating the given geom, rotmax is diagonal with element 1 !
+
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_5	2025-01-17 12:58:56.385238 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_5	2025-01-17 12:59:03.504729	Runtime: 0:00:07.119491	Error Code: 0
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_5/ANION	2025-01-17 12:59:06.989427 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_5/ANION	2025-01-17 13:15:40.494000	Runtime: 0:16:33.504573	Error Code: 0
+
+
+----------------------------------------Starting parallel gradient and coupling calculation----------------------------------------
+
+
+::::: Scratchdir set to /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch :::::
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 13:15:52.322067 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 13:15:52.330806 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 13:15:52.343891 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 13:15:52.356813 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 13:15:52.371652 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 13:15:52.385016 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 13:15:52.401635 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 13:15:52.411506 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 13:15:52.427046 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 13:15:52.436967 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 13:15:52.450382 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 13:15:52.466195 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 13:15:52.477703 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 13:15:52.491727 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 13:15:52.504458 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 13:18:01.770164	Runtime: 0:02:09.448097	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 13:18:02.073893	Runtime: 0:02:09.596190	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 13:18:02.588163	Runtime: 0:02:10.203147	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 13:18:02.596132	Runtime: 0:02:10.239319	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 13:18:02.613476	Runtime: 0:02:10.241824	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 13:18:02.613543	Runtime: 0:02:10.282737	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 13:18:02.616120	Runtime: 0:02:10.111662	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 13:18:02.673446	Runtime: 0:02:10.181719	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 13:18:02.676835	Runtime: 0:02:10.332944	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 13:18:02.750356	Runtime: 0:02:10.323310	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 13:18:02.751776	Runtime: 0:02:10.350141	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 13:18:02.754280	Runtime: 0:02:10.288085	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 13:18:02.755958	Runtime: 0:02:10.344452	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 13:18:11.440435	Runtime: 0:02:18.990053	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 13:18:18.337329	Runtime: 0:02:25.900362	Error Code: [0, 0, 0]
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_5/NEUTRAL	2025-01-17 13:18:22.037368 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_5/NEUTRAL	2025-01-17 13:18:38.173084	Runtime: 0:00:16.135716	Error Code: 0
+
+Density files are read from path: 
+ /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_5/CAP_INPS 
+
+Ref energy : -109.125162256639
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating CAP matrix via OpenCAP driver. 
+Calculating CAP matrix in AO basis using 16 threads.
+Radial precision: 1.00e-16 Angular points: 590
+Integration time:1.057494
+
+|==================== End of OpenCAP run (1.070086 Seconds). ====================|
+
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating gradient contribution from CAP via OpenCAP driver. 
+Calculating CAPG matrix (Atom: 1) in AO basis using 16 threads.
+Calculating CAPG matrix (Atom: 2) in AO basis using 16 threads.
+Integration time:4.535622
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 1).
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 2).
+Integration time:10.920987
+
+|==================== End of OpenCAP run (15.625466 Seconds). ====================|
+
+
+
+** Printing natural orbitals!
+
+
+
+CAP gradients (Hartree/Bohr) of resonance state
+
++------+-----------+----------+-----------+
+| Atom |         X |        Y |         Z |
++------+-----------+----------+-----------+
+|    N | -0.000000 | 0.000000 |  0.001774 |
+|    N |  0.000000 | 0.000000 | -0.001774 |
++------+-----------+----------+-----------+
+
+
+===> Scratch directory path: /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_6
+
+**Warning**
+  Not rotating the given geom, rotmax is diagonal with element 1 !
+
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_6	2025-01-17 13:18:59.883943 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_6	2025-01-17 13:19:05.710552	Runtime: 0:00:05.826609	Error Code: 0
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_6/ANION	2025-01-17 13:19:09.285279 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_6/ANION	2025-01-17 13:29:13.361551	Runtime: 0:10:04.076272	Error Code: 0
+
+
+----------------------------------------Starting parallel gradient and coupling calculation----------------------------------------
+
+
+::::: Scratchdir set to /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch :::::
+
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 13:29:25.136412 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 13:29:25.148213 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 13:29:25.161436 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 13:29:25.174788 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 13:29:25.187757 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 13:29:25.200841 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 13:29:25.215973 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 13:29:25.226791 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 13:29:25.241353 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 13:29:25.253710 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 13:29:25.266591 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 13:29:25.279746 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 13:29:25.291704 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 13:29:25.303585 
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 13:29:25.315402 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_5	2025-01-17 13:31:30.080882	Runtime: 0:02:04.893125	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_2	2025-01-17 13:31:30.287484	Runtime: 0:02:05.139271	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_3	2025-01-17 13:31:30.292226	Runtime: 0:02:05.130790	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_4	2025-01-17 13:31:30.296312	Runtime: 0:02:05.004608	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_1	2025-01-17 13:31:30.299456	Runtime: 0:02:05.163044	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_1_4	2025-01-17 13:31:30.309837	Runtime: 0:02:05.135049	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_3	2025-01-17 13:31:30.616309	Runtime: 0:02:05.400336	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_5	2025-01-17 13:31:30.616623	Runtime: 0:02:05.375270	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_2_4	2025-01-17 13:31:30.616944	Runtime: 0:02:05.390153	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_2	2025-01-17 13:31:45.313447	Runtime: 0:02:20.112606	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_5	2025-01-17 13:31:45.313855	Runtime: 0:02:19.998453	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/grad_3	2025-01-17 13:31:47.709948	Runtime: 0:02:22.456238	Error Code: [0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_4_5	2025-01-17 13:31:47.751992	Runtime: 0:02:22.448407	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_4	2025-01-17 13:31:47.781016	Runtime: 0:02:22.514425	Error Code: [0, 0, 0, 0, 0]
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/scratch/nac_3_5	2025-01-17 13:31:47.806857	Runtime: 0:02:22.527111	Error Code: [0, 0, 0, 0, 0]
+START:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_6/NEUTRAL	2025-01-17 13:31:51.427591 
+FINISH:	/home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_6/NEUTRAL	2025-01-17 13:32:07.597976	Runtime: 0:00:16.170385	Error Code: 0
+
+Density files are read from path: 
+ /home/sbkmdl/OPENCAP-MD/N2/MRCIS/7e10o/2DRT/AD_DENS_TRACK/SAVEDIR/sp_6/CAP_INPS 
+
+Ref energy : -109.125135349217
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating CAP matrix via OpenCAP driver. 
+Calculating CAP matrix in AO basis using 16 threads.
+Radial precision: 1.00e-16 Angular points: 590
+Integration time:0.997676
+
+|==================== End of OpenCAP run (1.01013 Seconds). ====================|
+
+
+
+|==================== OpenCAP run details: ====================|
+
+Calculating gradient contribution from CAP via OpenCAP driver. 
+Calculating CAPG matrix (Atom: 1) in AO basis using 16 threads.
+Calculating CAPG matrix (Atom: 2) in AO basis using 16 threads.
+Integration time:4.400763
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 1).
+Calculating CAP functional derivative matrix in AO basis using 16 threads.
+
+Calculating CAP matrix (in AO basis) on grid with 1st order derivative of grid weight using 16 threads (Atom: 2).
+Integration time:10.986817
+
+|==================== End of OpenCAP run (15.5685 Seconds). ====================|
+
+
+
+** Printing natural orbitals!
+
+
+
+CAP gradients (Hartree/Bohr) of resonance state
+
++------+-----------+-----------+-----------+
+| Atom |         X |         Y |         Z |
++------+-----------+-----------+-----------+
+|    N | -0.000000 | -0.000000 |  0.001773 |
+|    N |  0.000000 | -0.000000 | -0.001773 |
++------+-----------+-----------+-----------+
+Optimization SUCCESS after 7 iterations:

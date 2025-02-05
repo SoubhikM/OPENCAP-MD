@@ -1,0 +1,22 @@
+nstates 5
+# Total no of states in MR-CIS calculation
+
+eta_opt 0.00848
+#optimized eta chosen
+
+act_state 2
+# Active state to track
+
+cap_x 2.77
+cap_y 2.77
+cap_z 4.88
+# cap onset in x, y and z directions
+
+natorb
+# Print natural orbitals in DIAG basis (OPENCAPMD.gbs basis file is needed in pyscf format)
+
+maxsqnorm 0.998001
+# Maximum square norm: c^2 sum limits printing of all CSFs and Slater determinants (WF-OVERLAP calculation).
+
+symmetry
+# If symmetry is invoked.

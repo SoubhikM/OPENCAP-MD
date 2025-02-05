@@ -1,0 +1,813 @@
+[INFO]: Creating a UserComputer
+[INFO]: 
+    			-----------------------------------------
+
+    			 OPTKING 3.0: for geometry optimizations 
+
+    			     By R.A. King, Bethel University     
+
+    			        with contributions from          
+
+    			    A.V. Copan, J. Cayton, A. Heide      
+
+    			-----------------------------------------
+
+    
+[INFO]: 
+		 -- Optimization Parameters --
+	accept_symmetry_breaking       =           False
+	alg_geom_maxiter               =              50
+	bt_dx_conv                     =           1e-07
+	bt_dx_rms_change_conv          =           1e-12
+	bt_max_iter                    =              25
+	cart_hess_read                 =           False
+	consecutive_backsteps_allowed  =               0
+	conv_max_DE                    =              -1
+	conv_max_disp                  =           6e-05
+	conv_max_force                 =         1.5e-05
+	conv_rms_disp                  =           4e-05
+	conv_rms_force                 =           1e-05
+	covalent_connect               =             1.3
+	dynamic_level                  =               0
+	dynamic_level_max              =               0
+	ensure_bt_convergence          =           False
+	ext_force_bend                 =              []
+	ext_force_cartesian            =              []
+	ext_force_dihedral             =              []
+	ext_force_distance             =              []
+	ext_force_oofp                 =              []
+	fix_val_near_pi                =            1.57
+	flexible_g_convergence         =           False
+	frag_mode                      =          SINGLE
+	frag_ref_atoms                 =            None
+	freeze_intrafrag               =           False
+	frozen_bend                    =              []
+	frozen_cartesian               =              []
+	frozen_dihedral                =              []
+	frozen_distance                =              []
+	frozen_oofp                    =              []
+	full_hess_every                =              -1
+	g_convergence                  =       GAU_TIGHT
+	generate_intcos_exit           =           False
+	geom_maxiter                   =              50
+	h_bond_connect                 =             4.3
+	hess_update                    =            BFGS
+	hess_update_den_tol            =           1e-07
+	hess_update_dq_tol             =             0.5
+	hess_update_limit              =            True
+	hess_update_limit_max          =             1.0
+	hess_update_limit_scale        =             0.5
+	hess_update_use_last           =               4
+	hessian_file                   =            None
+	i_max_DE                       =           False
+	i_max_disp                     =            True
+	i_max_force                    =            True
+	i_rms_disp                     =            True
+	i_rms_force                    =            True
+	i_untampered                   =            True
+	include_oofp                   =           False
+	interfrag_collinear_tol        =            0.01
+	interfrag_coords               =            None
+	interfrag_dist_inv             =           False
+	interfrag_mode                 =           FIXED
+	interfrag_trust                =             0.5
+	interfrag_trust_max            =             1.0
+	interfrag_trust_min            =           0.001
+	interfragment_connect          =             1.8
+	intrafrag_hess                 =        SCHLEGEL
+	intrafrag_trust                =             0.5
+	intrafrag_trust_max            =             1.0
+	intrafrag_trust_min            =            0.25
+	irc_direction                  =         FORWARD
+	irc_points                     =              20
+	irc_step_size                  =             0.2
+	keep_intcos                    =           False
+	linear_bend_threshold          =            3.05
+	linesearch                     =           False
+	linesearch_step                =             0.1
+	max_disp_g_convergence         =          0.0012
+	max_energy_g_convergence       =           1e-06
+	max_force_g_convergence        =          0.0003
+	opt_coordinates                =            BOTH
+	opt_type                       =             MIN
+	output_type                    =            FILE
+	print_lvl                      =               1
+	program                        =            psi4
+	ranged_bend                    =              []
+	ranged_cartesian               =              []
+	ranged_dihedral                =              []
+	ranged_distance                =              []
+	ranged_oofp                    =              []
+	redundant_eval_tol             =           1e-10
+	rfo_follow_root                =           False
+	rfo_normalization_max          =             100
+	rfo_root                       =               0
+	rms_disp_g_convergence         =          0.0012
+	rms_force_g_convergence        =          0.0003
+	rsrfo_alpha_max                =     100000000.0
+	sd_hessian                     =             1.0
+	simple_step_scaling            =           False
+	small_bend_fix_threshold       =            0.35
+	steepest_descent_type          =         OVERLAP
+	step_type                      =             RFO
+	test_B                         =           False
+	test_derivative_B              =           False
+	trajectory                     =           False
+	v3d_tors_angle_lim             =           0.017
+	v3d_tors_cos_tol               =           1e-10
+	working_consecutive_backsteps  =               0
+	working_steps_since_last_H     =               0
+
+
+[INFO]: Molsys:
+
+	                            ===> Fragment 1 <== 
+
+	 Z (Atomic Numbers)          Masses                          Geom                  
+	       7.000000            14.003074          0.00000000  0.00000000  1.03450007   
+	       7.000000            14.003074          0.00000000  0.00000000 -1.03450007   
+
+	 - Coordinate -           - BOHR/RAD -       - ANG/DEG -
+	 R(1,2)           =         2.069000           1.094868
+	 X(1)             =         0.000000           0.000000
+	 Y(1)             =         0.000000           0.000000
+	 Z(1)             =         1.034500           0.547434
+	 X(2)             =         0.000000           0.000000
+	 Y(2)             =         0.000000           0.000000
+	 Z(2)             =        -1.034500          -0.547434
+
+[INFO]: Projected (PHP) Hessian matrix
+	   1.819967   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000
+	   0.000000   0.100000   0.000000   0.000000   0.000000   0.000000   0.000000
+	   0.000000   0.000000   0.100000   0.000000   0.000000   0.000000   0.000000
+	   0.000000   0.000000   0.000000   0.100000   0.000000   0.000000   0.000000
+	   0.000000   0.000000   0.000000   0.000000   0.100000   0.000000   0.000000
+	   0.000000   0.000000   0.000000   0.000000   0.000000   0.100000   0.000000
+	   0.000000   0.000000   0.000000   0.000000   0.000000   0.000000   0.100000
+
+[INFO]: 
+	         Geometry (au)                                       Gradient (au)
+   0.0000000000   0.0000000000   1.0345000700		  -0.0000000000  -0.0000000000  -0.2062363269
+   0.0000000000   0.0000000000  -1.0345000700		   0.0000000000   0.0000000000   0.2062363269
+
+[INFO]: 	Using RFO solution 1.
+[INFO]: 	Determining Cartesian step for fragment 1.
+[INFO]: 	Successfully converged to displaced geometry.
+[INFO]: 	RMS(dx):  9.065e-17 	Max(dx):  2.220e-16 	RMS(dq):  2.056e-16
+[WARNING]: 	Previous geometry is closer to target in internal coordinates, so using that one.
+
+[WARNING]: 	Best geometry has RMS(Delta(q)) = 1.88e-16
+
+[INFO]: 
+
+	        --- Internal Coordinate Step in ANG or DEG, aJ/ANG or AJ/DEG ---
+	-------------------------------------------------------------------------------
+	           Coordinate      Previous         Force          Change          New 
+	           ----------      --------        ------          ------        ------
+	               R(1,2)       1.09487        1.13275        0.05733       1.15220
+	                 X(1)       0.00000        0.00000       -0.00000      -0.00000
+	                 Y(1)       0.00000        0.00000        0.00000       0.00000
+	                 Z(1)       0.54743        0.56637        0.02867       0.57610
+	                 X(2)       0.00000       -0.00000       -0.00000      -0.00000
+	                 Y(2)       0.00000       -0.00000       -0.00000      -0.00000
+	                 Z(2)      -0.54743       -0.56637       -0.02867      -0.57610
+	-------------------------------------------------------------------------------
+
+[INFO]: 	|target step| :    0.1326970738
+[INFO]: 	gradient     :   -0.1683912558
+[INFO]: 	hessian      :    1.2466449436
+[INFO]: 	Norm of achieved step-size    0.1326970738
+[INFO]: 	Norm of achieved step-size (cart):    0.0766126913
+[INFO]: Molsys:
+
+	                            ===> Fragment 1 <== 
+
+	 Z (Atomic Numbers)          Masses                          Geom                  
+	       7.000000            14.003074         -0.00000000  0.00000000  1.08867342   
+	       7.000000            14.003074         -0.00000000 -0.00000000 -1.08867342   
+
+	 - Coordinate -           - BOHR/RAD -       - ANG/DEG -
+	 R(1,2)           =         2.177347           1.152202
+	 X(1)             =        -0.000000          -0.000000
+	 Y(1)             =         0.000000           0.000000
+	 Z(1)             =         1.088673           0.576101
+	 X(2)             =        -0.000000          -0.000000
+	 Y(2)             =        -0.000000          -0.000000
+	 Z(2)             =        -1.088673          -0.576101
+
+[INFO]: Performing convergence check.
+[INFO]: 
+	                                 ==> Convergence Check <==                                  
+    
+	Measures of convergence in internal coordinates in au.
+    
+	Criteria marked as inactive (o), active & met (*), and active & unmet ( ).
+
+	----------------------------------------------------------------------------------------------
+	   Step    Total Energy     Delta E     Max Force     RMS Force      Max Disp      RMS Disp   
+	----------------------------------------------------------------------------------------------
+	  Convergence Criteria              o    1.50e-05 *    1.00e-05 *    6.00e-05 *    4.00e-05 *
+	----------------------------------------------------------------------------------------------
+	     1    -108.98178901   -1.09e+02 o    1.37e-01      6.36e-02      1.08e-01      5.02e-02    ~
+	----------------------------------------------------------------------------------------------
+
+
+[INFO]: 	Convergence check returned False
+[INFO]: 	Performing BFGS update.
+[INFO]: 	Using 1 previous steps for update.
+[INFO]: 	Steps to be used in Hessian update:  1
+
+[INFO]: 	Updated Hessian (in au) 
+ 	   0.538092  -0.000000  -0.000000   0.269046  -0.000000  -0.000000  -0.269046
+	   0.000000   0.100000   0.000000   0.000000  -0.000000  -0.000000  -0.000000
+	  -0.000000   0.000000   0.100000  -0.000000   0.000000  -0.000000   0.000000
+	   0.269046  -0.000000  -0.000000   0.184523  -0.000000  -0.000000  -0.084523
+	  -0.000000  -0.000000   0.000000  -0.000000   0.100000   0.000000   0.000000
+	  -0.000000  -0.000000  -0.000000  -0.000000   0.000000   0.100000   0.000000
+	  -0.269046   0.000000   0.000000  -0.084523   0.000000   0.000000   0.184523
+
+[INFO]: Projected (PHP) Hessian matrix
+	   0.538092  -0.000000  -0.000000   0.269046  -0.000000  -0.000000  -0.269046
+	   0.000000   0.100000   0.000000   0.000000  -0.000000  -0.000000  -0.000000
+	  -0.000000   0.000000   0.100000  -0.000000   0.000000  -0.000000   0.000000
+	   0.269046  -0.000000  -0.000000   0.184523  -0.000000  -0.000000  -0.084523
+	  -0.000000  -0.000000   0.000000  -0.000000   0.100000   0.000000   0.000000
+	  -0.000000  -0.000000  -0.000000  -0.000000   0.000000   0.100000   0.000000
+	  -0.269046   0.000000   0.000000  -0.084523   0.000000   0.000000   0.184523
+
+[INFO]: 
+	         Geometry (au)                                       Gradient (au)
+  -0.0000000000   0.0000000000   1.0886734235		   0.0000000000  -0.0000000000  -0.0750601850
+  -0.0000000000  -0.0000000000  -1.0886734235		   0.0000000000   0.0000000000   0.0750601850
+
+[INFO]: 	Current Step Report 
+ 
+	Current energy:      -109.0286022304
+	Energy change for the previous step:
+		Actual       :        -0.0468132204
+		Projected    :        -0.0111725134
+
+[INFO]: 	Energy ratio =    4.19003
+[INFO]: 	Energy ratio indicates good step.
+[INFO]: 	Intrafrag trust radius increased to 1.000e+00.
+[INFO]: 	Using RFO solution 1.
+[INFO]: 	Determining Cartesian step for fragment 1.
+[INFO]: 	Successfully converged to displaced geometry.
+[INFO]: 	RMS(dx):  6.757e-17 	Max(dx):  1.480e-16 	RMS(dq):  7.873e-16
+[INFO]: 
+
+	        --- Internal Coordinate Step in ANG or DEG, aJ/ANG or AJ/DEG ---
+	-------------------------------------------------------------------------------
+	           Coordinate      Previous         Force          Change          New 
+	           ----------      --------        ------          ------        ------
+	               R(1,2)       1.15220        0.41227        0.03262       1.18482
+	                 X(1)      -0.00000       -0.00000        0.00000       0.00000
+	                 Y(1)       0.00000       -0.00000       -0.00000      -0.00000
+	                 Z(1)       0.57610        0.20613        0.01631       0.59241
+	                 X(2)      -0.00000        0.00000        0.00000      -0.00000
+	                 Y(2)      -0.00000        0.00000        0.00000       0.00000
+	                 Z(2)      -0.57610       -0.20613       -0.01631      -0.59241
+	-------------------------------------------------------------------------------
+
+[INFO]: 	|target step| :    0.0754976799
+[INFO]: 	gradient     :   -0.0612863844
+[INFO]: 	hessian      :    0.8071381556
+[INFO]: 	Norm of achieved step-size    0.0754976799
+[INFO]: 	Norm of achieved step-size (cart):    0.0435886058
+[INFO]: Molsys:
+
+	                            ===> Fragment 1 <== 
+
+	 Z (Atomic Numbers)          Masses                          Geom                  
+	       7.000000            14.003074          0.00000000 -0.00000000  1.11949522   
+	       7.000000            14.003074         -0.00000000  0.00000000 -1.11949522   
+
+	 - Coordinate -           - BOHR/RAD -       - ANG/DEG -
+	 R(1,2)           =         2.238990           1.184823
+	 X(1)             =         0.000000           0.000000
+	 Y(1)             =        -0.000000          -0.000000
+	 Z(1)             =         1.119495           0.592411
+	 X(2)             =        -0.000000          -0.000000
+	 Y(2)             =         0.000000           0.000000
+	 Z(2)             =        -1.119495          -0.592411
+
+[INFO]: Performing convergence check.
+[INFO]: 
+	                                 ==> Convergence Check <==                                  
+    
+	Measures of convergence in internal coordinates in au.
+    
+	Criteria marked as inactive (o), active & met (*), and active & unmet ( ).
+
+	----------------------------------------------------------------------------------------------
+	   Step    Total Energy     Delta E     Max Force     RMS Force      Max Disp      RMS Disp   
+	----------------------------------------------------------------------------------------------
+	  Convergence Criteria              o    1.50e-05 *    1.00e-05 *    6.00e-05 *    4.00e-05 *
+	----------------------------------------------------------------------------------------------
+	     2    -109.02860223   -4.68e-02 o    5.00e-02      2.32e-02      6.16e-02      2.85e-02    ~
+	----------------------------------------------------------------------------------------------
+
+
+[INFO]: 	Convergence check returned False
+[INFO]: 	Performing BFGS update.
+[INFO]: 	Using 2 previous steps for update.
+[INFO]: 	Steps to be used in Hessian update:  2 1
+
+[INFO]: 	Updated Hessian (in au) 
+ 	   0.504689  -0.000000   0.000000   0.252345  -0.000000  -0.000000  -0.252345
+	   0.000000   0.100000   0.000000   0.000000  -0.000000  -0.000000   0.000000
+	   0.000000  -0.000000   0.100000   0.000000   0.000000   0.000000  -0.000000
+	   0.252345  -0.000000   0.000000   0.176172  -0.000000  -0.000000  -0.076172
+	  -0.000000  -0.000000  -0.000000  -0.000000   0.100000   0.000000   0.000000
+	  -0.000000  -0.000000   0.000000  -0.000000  -0.000000   0.100000   0.000000
+	  -0.252345   0.000000  -0.000000  -0.076172   0.000000   0.000000   0.176172
+
+[INFO]: Projected (PHP) Hessian matrix
+	   0.504689  -0.000000   0.000000   0.252345  -0.000000  -0.000000  -0.252345
+	   0.000000   0.100000   0.000000   0.000000  -0.000000  -0.000000   0.000000
+	   0.000000  -0.000000   0.100000   0.000000   0.000000   0.000000  -0.000000
+	   0.252345  -0.000000   0.000000   0.176172  -0.000000  -0.000000  -0.076172
+	  -0.000000  -0.000000  -0.000000  -0.000000   0.100000   0.000000   0.000000
+	  -0.000000  -0.000000   0.000000  -0.000000  -0.000000   0.100000   0.000000
+	  -0.252345   0.000000  -0.000000  -0.076172   0.000000   0.000000   0.176172
+
+[INFO]: 
+	         Geometry (au)                                       Gradient (au)
+   0.0000000000  -0.0000000000   1.1194952223		   0.0000000000  -0.0000000000  -0.0132036058
+  -0.0000000000   0.0000000000  -1.1194952223		  -0.0000000000   0.0000000000   0.0132036058
+
+[INFO]: 	Current Step Report 
+ 
+	Current energy:      -109.0316754961
+	Energy change for the previous step:
+		Actual       :        -0.0030732657
+		Projected    :        -0.0023134899
+
+[INFO]: 	Energy ratio =    1.32841
+[INFO]: 	Using RFO solution 1.
+[INFO]: 	Determining Cartesian step for fragment 1.
+[INFO]: 	Successfully converged to displaced geometry.
+[INFO]: 	RMS(dx):  4.273e-17 	Max(dx):  7.401e-17 	RMS(dq):  2.521e-15
+[INFO]: 
+
+	        --- Internal Coordinate Step in ANG or DEG, aJ/ANG or AJ/DEG ---
+	-------------------------------------------------------------------------------
+	           Coordinate      Previous         Force          Change          New 
+	           ----------      --------        ------          ------        ------
+	               R(1,2)       1.18482        0.07252        0.00615       1.19097
+	                 X(1)       0.00000       -0.00000       -0.00000       0.00000
+	                 Y(1)      -0.00000       -0.00000        0.00000       0.00000
+	                 Z(1)       0.59241        0.03626        0.00308       0.59549
+	                 X(2)      -0.00000        0.00000        0.00000      -0.00000
+	                 Y(2)       0.00000       -0.00000       -0.00000       0.00000
+	                 Z(2)      -0.59241       -0.03626       -0.00308      -0.59549
+	-------------------------------------------------------------------------------
+
+[INFO]: 	|target step| :    0.0142378152
+[INFO]: 	gradient     :   -0.0107806990
+[INFO]: 	hessian      :    0.7570342380
+[INFO]: 	Norm of achieved step-size    0.0142378152
+[INFO]: 	Norm of achieved step-size (cart):    0.0082202065
+[INFO]: Molsys:
+
+	                            ===> Fragment 1 <== 
+
+	 Z (Atomic Numbers)          Masses                          Geom                  
+	       7.000000            14.003074          0.00000000  0.00000000  1.12530779   
+	       7.000000            14.003074         -0.00000000  0.00000000 -1.12530779   
+
+	 - Coordinate -           - BOHR/RAD -       - ANG/DEG -
+	 R(1,2)           =         2.250616           1.190974
+	 X(1)             =         0.000000           0.000000
+	 Y(1)             =         0.000000           0.000000
+	 Z(1)             =         1.125308           0.595487
+	 X(2)             =        -0.000000          -0.000000
+	 Y(2)             =         0.000000           0.000000
+	 Z(2)             =        -1.125308          -0.595487
+
+[INFO]: Performing convergence check.
+[INFO]: 
+	                                 ==> Convergence Check <==                                  
+    
+	Measures of convergence in internal coordinates in au.
+    
+	Criteria marked as inactive (o), active & met (*), and active & unmet ( ).
+
+	----------------------------------------------------------------------------------------------
+	   Step    Total Energy     Delta E     Max Force     RMS Force      Max Disp      RMS Disp   
+	----------------------------------------------------------------------------------------------
+	  Convergence Criteria              o    1.50e-05 *    1.00e-05 *    6.00e-05 *    4.00e-05 *
+	----------------------------------------------------------------------------------------------
+	     3    -109.03167550   -3.07e-03 o    8.80e-03      4.07e-03      1.16e-02      5.38e-03    ~
+	----------------------------------------------------------------------------------------------
+
+
+[INFO]: 	Convergence check returned False
+[INFO]: 	Performing BFGS update.
+[INFO]: 	Using 3 previous steps for update.
+[INFO]: 	Steps to be used in Hessian update:  3 2 1
+
+[INFO]: 	Updated Hessian (in au) 
+ 	   0.497330   0.000000  -0.000000   0.248665  -0.000000  -0.000000  -0.248665
+	   0.000000   0.100000  -0.000000   0.000000   0.000000  -0.000000   0.000000
+	  -0.000000   0.000000   0.100000   0.000000   0.000000   0.000000   0.000000
+	   0.248665   0.000000  -0.000000   0.174333   0.000000  -0.000000  -0.074333
+	  -0.000000  -0.000000   0.000000  -0.000000   0.100000   0.000000  -0.000000
+	  -0.000000   0.000000   0.000000  -0.000000  -0.000000   0.100000   0.000000
+	  -0.248665  -0.000000  -0.000000  -0.074333   0.000000   0.000000   0.174333
+
+[INFO]: Projected (PHP) Hessian matrix
+	   0.497330   0.000000  -0.000000   0.248665  -0.000000  -0.000000  -0.248665
+	   0.000000   0.100000  -0.000000   0.000000   0.000000  -0.000000   0.000000
+	  -0.000000   0.000000   0.100000   0.000000   0.000000   0.000000   0.000000
+	   0.248665   0.000000  -0.000000   0.174333   0.000000  -0.000000  -0.074333
+	  -0.000000  -0.000000   0.000000  -0.000000   0.100000   0.000000  -0.000000
+	  -0.000000   0.000000   0.000000  -0.000000  -0.000000   0.100000   0.000000
+	  -0.248665  -0.000000  -0.000000  -0.074333   0.000000   0.000000   0.174333
+
+[INFO]: 
+	         Geometry (au)                                       Gradient (au)
+   0.0000000000   0.0000000000   1.1253077860		  -0.0000000000  -0.0000000000  -0.0030099537
+  -0.0000000000   0.0000000000  -1.1253077860		   0.0000000000   0.0000000000   0.0030099537
+
+[INFO]: 	Current Step Report 
+ 
+	Current energy:      -109.0318416461
+	Energy change for the previous step:
+		Actual       :        -0.0001661501
+		Projected    :        -0.0000767468
+
+[INFO]: 	Energy ratio =    2.16491
+[INFO]: 	Using RFO solution 1.
+[INFO]: 	Determining Cartesian step for fragment 1.
+[INFO]: 	Successfully converged to displaced geometry.
+[INFO]: 	RMS(dx):  9.065e-17 	Max(dx):  2.220e-16 	RMS(dq):  2.054e-14
+[WARNING]: 	Previous geometry is closer to target in internal coordinates, so using that one.
+
+[WARNING]: 	Best geometry has RMS(Delta(q)) = 2.05e-14
+
+[INFO]: 
+
+	        --- Internal Coordinate Step in ANG or DEG, aJ/ANG or AJ/DEG ---
+	-------------------------------------------------------------------------------
+	           Coordinate      Previous         Force          Change          New 
+	           ----------      --------        ------          ------        ------
+	               R(1,2)       1.19097        0.01653        0.00142       1.19240
+	                 X(1)       0.00000        0.00000        0.00000       0.00000
+	                 Y(1)       0.00000        0.00000        0.00000       0.00000
+	                 Z(1)       0.59549        0.00827        0.00071       0.59620
+	                 X(2)      -0.00000       -0.00000       -0.00000      -0.00000
+	                 Y(2)       0.00000       -0.00000       -0.00000       0.00000
+	                 Z(2)      -0.59549       -0.00827       -0.00071      -0.59620
+	-------------------------------------------------------------------------------
+
+[INFO]: 	|target step| :    0.0032943779
+[INFO]: 	gradient     :   -0.0024576169
+[INFO]: 	hessian      :    0.7459952454
+[INFO]: 	Norm of achieved step-size    0.0032943779
+[INFO]: 	Norm of achieved step-size (cart):    0.0019020099
+[INFO]: Molsys:
+
+	                            ===> Fragment 1 <== 
+
+	 Z (Atomic Numbers)          Masses                          Geom                  
+	       7.000000            14.003074          0.00000000  0.00000000  1.12665271   
+	       7.000000            14.003074         -0.00000000  0.00000000 -1.12665271   
+
+	 - Coordinate -           - BOHR/RAD -       - ANG/DEG -
+	 R(1,2)           =         2.253305           1.192398
+	 X(1)             =         0.000000           0.000000
+	 Y(1)             =         0.000000           0.000000
+	 Z(1)             =         1.126653           0.596199
+	 X(2)             =        -0.000000          -0.000000
+	 Y(2)             =         0.000000           0.000000
+	 Z(2)             =        -1.126653          -0.596199
+
+[INFO]: Performing convergence check.
+[INFO]: 
+	                                 ==> Convergence Check <==                                  
+    
+	Measures of convergence in internal coordinates in au.
+    
+	Criteria marked as inactive (o), active & met (*), and active & unmet ( ).
+
+	----------------------------------------------------------------------------------------------
+	   Step    Total Energy     Delta E     Max Force     RMS Force      Max Disp      RMS Disp   
+	----------------------------------------------------------------------------------------------
+	  Convergence Criteria              o    1.50e-05 *    1.00e-05 *    6.00e-05 *    4.00e-05 *
+	----------------------------------------------------------------------------------------------
+	     4    -109.03184165   -1.66e-04 o    2.01e-03      9.29e-04      2.69e-03      1.25e-03    ~
+	----------------------------------------------------------------------------------------------
+
+
+[INFO]: 	Convergence check returned False
+[INFO]: 	Performing BFGS update.
+[INFO]: 	Using 4 previous steps for update.
+[INFO]: 	Steps to be used in Hessian update:  4 3 2 1
+
+[INFO]: 	Updated Hessian (in au) 
+ 	   0.495613   0.000000   0.000000   0.247807   0.000000  -0.000000  -0.247807
+	  -0.000000   0.100000  -0.000000   0.000000   0.000000  -0.000000   0.000000
+	   0.000000   0.000000   0.100000   0.000000   0.000000  -0.000000   0.000000
+	   0.247807   0.000000   0.000000   0.173903   0.000000  -0.000000  -0.073903
+	  -0.000000   0.000000  -0.000000   0.000000   0.100000   0.000000  -0.000000
+	  -0.000000   0.000000   0.000000  -0.000000  -0.000000   0.100000   0.000000
+	  -0.247807  -0.000000  -0.000000  -0.073903  -0.000000   0.000000   0.173903
+
+[INFO]: Projected (PHP) Hessian matrix
+	   0.495613   0.000000   0.000000   0.247807   0.000000  -0.000000  -0.247807
+	  -0.000000   0.100000  -0.000000   0.000000   0.000000  -0.000000   0.000000
+	   0.000000   0.000000   0.100000   0.000000   0.000000  -0.000000   0.000000
+	   0.247807   0.000000   0.000000   0.173903   0.000000  -0.000000  -0.073903
+	  -0.000000   0.000000  -0.000000   0.000000   0.100000   0.000000  -0.000000
+	  -0.000000   0.000000   0.000000  -0.000000  -0.000000   0.100000   0.000000
+	  -0.247807  -0.000000  -0.000000  -0.073903  -0.000000   0.000000   0.173903
+
+[INFO]: 
+	         Geometry (au)                                       Gradient (au)
+   0.0000000000   0.0000000000   1.1266527102		  -0.0000000000   0.0000000000  -0.0007119400
+  -0.0000000000   0.0000000000  -1.1266527102		   0.0000000000  -0.0000000000   0.0007119400
+
+[INFO]: 	Current Step Report 
+ 
+	Current energy:      -109.0318629201
+	Energy change for the previous step:
+		Actual       :        -0.0000212739
+		Projected    :        -0.0000040482
+
+[INFO]: 	Energy ratio =    5.25521
+[INFO]: 	Using RFO solution 1.
+[INFO]: 	Determining Cartesian step for fragment 1.
+[INFO]: 	Successfully converged to displaced geometry.
+[INFO]: 	RMS(dx):  9.065e-17 	Max(dx):  2.220e-16 	RMS(dq):  3.936e-16
+[INFO]: 
+
+	        --- Internal Coordinate Step in ANG or DEG, aJ/ANG or AJ/DEG ---
+	-------------------------------------------------------------------------------
+	           Coordinate      Previous         Force          Change          New 
+	           ----------      --------        ------          ------        ------
+	               R(1,2)       1.19240        0.00391        0.00034       1.19274
+	                 X(1)       0.00000        0.00000        0.00000       0.00000
+	                 Y(1)       0.00000       -0.00000       -0.00000      -0.00000
+	                 Z(1)       0.59620        0.00196        0.00017       0.59637
+	                 X(2)      -0.00000       -0.00000       -0.00000      -0.00000
+	                 Y(2)       0.00000        0.00000        0.00000       0.00000
+	                 Z(2)      -0.59620       -0.00196       -0.00017      -0.59637
+	-------------------------------------------------------------------------------
+
+[INFO]: 	|target step| :    0.0007819215
+[INFO]: 	gradient     :   -0.0005812966
+[INFO]: 	hessian      :    0.7434201436
+[INFO]: 	Norm of achieved step-size    0.0007819215
+[INFO]: 	Norm of achieved step-size (cart):    0.0004514426
+[INFO]: Molsys:
+
+	                            ===> Fragment 1 <== 
+
+	 Z (Atomic Numbers)          Masses                          Geom                  
+	       7.000000            14.003074          0.00000000 -0.00000000  1.12697193   
+	       7.000000            14.003074         -0.00000000  0.00000000 -1.12697193   
+
+	 - Coordinate -           - BOHR/RAD -       - ANG/DEG -
+	 R(1,2)           =         2.253944           1.192736
+	 X(1)             =         0.000000           0.000000
+	 Y(1)             =        -0.000000          -0.000000
+	 Z(1)             =         1.126972           0.596368
+	 X(2)             =        -0.000000          -0.000000
+	 Y(2)             =         0.000000           0.000000
+	 Z(2)             =        -1.126972          -0.596368
+
+[INFO]: Performing convergence check.
+[INFO]: 
+	                                 ==> Convergence Check <==                                  
+    
+	Measures of convergence in internal coordinates in au.
+    
+	Criteria marked as inactive (o), active & met (*), and active & unmet ( ).
+
+	----------------------------------------------------------------------------------------------
+	   Step    Total Energy     Delta E     Max Force     RMS Force      Max Disp      RMS Disp   
+	----------------------------------------------------------------------------------------------
+	  Convergence Criteria              o    1.50e-05 *    1.00e-05 *    6.00e-05 *    4.00e-05 *
+	----------------------------------------------------------------------------------------------
+	     5    -109.03186292   -2.13e-05 o    4.75e-04      2.20e-04      6.38e-04      2.96e-04    ~
+	----------------------------------------------------------------------------------------------
+
+
+[INFO]: 	Convergence check returned False
+[INFO]: 	Performing BFGS update.
+[INFO]: 	Using 4 previous steps for update.
+[INFO]: 	Steps to be used in Hessian update:  5 4 3 2
+
+[INFO]: 	Updated Hessian (in au) 
+ 	   0.434592   0.000000   0.000000   0.217296   0.000000   0.000000  -0.217296
+	  -0.000000   0.100000  -0.000000   0.000000   0.000000  -0.000000   0.000000
+	   0.000000   0.000000   0.100000   0.000000  -0.000000  -0.000000  -0.000000
+	   0.217296   0.000000   0.000000   0.158648   0.000000   0.000000  -0.058648
+	   0.000000   0.000000  -0.000000   0.000000   0.100000   0.000000  -0.000000
+	   0.000000   0.000000   0.000000   0.000000  -0.000000   0.100000  -0.000000
+	  -0.217296  -0.000000  -0.000000  -0.058648  -0.000000  -0.000000   0.158648
+
+[INFO]: Projected (PHP) Hessian matrix
+	   0.434592   0.000000   0.000000   0.217296   0.000000   0.000000  -0.217296
+	  -0.000000   0.100000  -0.000000   0.000000   0.000000  -0.000000   0.000000
+	   0.000000   0.000000   0.100000   0.000000  -0.000000  -0.000000  -0.000000
+	   0.217296   0.000000   0.000000   0.158648   0.000000   0.000000  -0.058648
+	   0.000000   0.000000  -0.000000   0.000000   0.100000   0.000000  -0.000000
+	   0.000000   0.000000   0.000000   0.000000  -0.000000   0.100000  -0.000000
+	  -0.217296  -0.000000  -0.000000  -0.058648  -0.000000  -0.000000   0.158648
+
+[INFO]: 
+	         Geometry (au)                                       Gradient (au)
+   0.0000000000  -0.0000000000   1.1269719283		  -0.0000000000   0.0000000000  -0.0001612121
+  -0.0000000000   0.0000000000  -1.1269719283		   0.0000000000   0.0000000000   0.0001612121
+
+[INFO]: 	Current Step Report 
+ 
+	Current energy:      -109.0318671171
+	Energy change for the previous step:
+		Actual       :        -0.0000041970
+		Projected    :        -0.0000002273
+
+[INFO]: 	Energy ratio =   18.46755
+[INFO]: 	Using RFO solution 1.
+[INFO]: 	Determining Cartesian step for fragment 1.
+[INFO]: 	Successfully converged to displaced geometry.
+[INFO]: 	RMS(dx):  1.883e-21 	Max(dx):  3.999e-21 	RMS(dq):  1.506e-13
+[INFO]: 
+
+	        --- Internal Coordinate Step in ANG or DEG, aJ/ANG or AJ/DEG ---
+	-------------------------------------------------------------------------------
+	           Coordinate      Previous         Force          Change          New 
+	           ----------      --------        ------          ------        ------
+	               R(1,2)       1.19274        0.00089        0.00009       1.19282
+	                 X(1)       0.00000        0.00000        0.00000       0.00000
+	                 Y(1)      -0.00000       -0.00000        0.00000       0.00000
+	                 Z(1)       0.59637        0.00044        0.00004       0.59641
+	                 X(2)      -0.00000       -0.00000       -0.00000      -0.00000
+	                 Y(2)       0.00000       -0.00000       -0.00000       0.00000
+	                 Z(2)      -0.59637       -0.00044       -0.00004      -0.59641
+	-------------------------------------------------------------------------------
+
+[INFO]: 	|target step| :    0.0002019199
+[INFO]: 	gradient     :   -0.0001316291
+[INFO]: 	hessian      :    0.6518877029
+[INFO]: 	Norm of achieved step-size    0.0002019199
+[INFO]: 	Norm of achieved step-size (cart):    0.0001165785
+[INFO]: Molsys:
+
+	                            ===> Fragment 1 <== 
+
+	 Z (Atomic Numbers)          Masses                          Geom                  
+	       7.000000            14.003074          0.00000000  0.00000000  1.12705436   
+	       7.000000            14.003074         -0.00000000  0.00000000 -1.12705436   
+
+	 - Coordinate -           - BOHR/RAD -       - ANG/DEG -
+	 R(1,2)           =         2.254109           1.192823
+	 X(1)             =         0.000000           0.000000
+	 Y(1)             =         0.000000           0.000000
+	 Z(1)             =         1.127054           0.596411
+	 X(2)             =        -0.000000          -0.000000
+	 Y(2)             =         0.000000           0.000000
+	 Z(2)             =        -1.127054          -0.596411
+
+[INFO]: Performing convergence check.
+[INFO]: 
+	                                 ==> Convergence Check <==                                  
+    
+	Measures of convergence in internal coordinates in au.
+    
+	Criteria marked as inactive (o), active & met (*), and active & unmet ( ).
+
+	----------------------------------------------------------------------------------------------
+	   Step    Total Energy     Delta E     Max Force     RMS Force      Max Disp      RMS Disp   
+	----------------------------------------------------------------------------------------------
+	  Convergence Criteria              o    1.50e-05 *    1.00e-05 *    6.00e-05 *    4.00e-05 *
+	----------------------------------------------------------------------------------------------
+	     6    -109.03186712   -4.20e-06 o    1.07e-04      4.98e-05      1.65e-04      7.63e-05    ~
+	----------------------------------------------------------------------------------------------
+
+
+[INFO]: 	Convergence check returned False
+[INFO]: 	Performing BFGS update.
+[INFO]: 	Using 4 previous steps for update.
+[WARNING]: 	Denominators (dg)(dq) or (dq)(dq) are very small.
+[WARNING]: 	Skipping Hessian update for step 6.
+[INFO]: 	Steps to be used in Hessian update:  5 4 3 2
+
+[INFO]: 	Updated Hessian (in au) 
+ 	   0.434529   0.000000   0.000000   0.217265   0.000000   0.000000  -0.217265
+	  -0.000000   0.100000  -0.000000   0.000000  -0.000000  -0.000000   0.000000
+	   0.000000   0.000000   0.100000   0.000000  -0.000000  -0.000000  -0.000000
+	   0.217265   0.000000   0.000000   0.158632   0.000000   0.000000  -0.058632
+	   0.000000   0.000000  -0.000000   0.000000   0.100000   0.000000  -0.000000
+	   0.000000  -0.000000   0.000000   0.000000  -0.000000   0.100000  -0.000000
+	  -0.217265  -0.000000  -0.000000  -0.058632  -0.000000  -0.000000   0.158632
+
+[INFO]: Projected (PHP) Hessian matrix
+	   0.434529   0.000000   0.000000   0.217265   0.000000   0.000000  -0.217265
+	  -0.000000   0.100000  -0.000000   0.000000  -0.000000  -0.000000   0.000000
+	   0.000000   0.000000   0.100000   0.000000  -0.000000  -0.000000  -0.000000
+	   0.217265   0.000000   0.000000   0.158632   0.000000   0.000000  -0.058632
+	   0.000000   0.000000  -0.000000   0.000000   0.100000   0.000000  -0.000000
+	   0.000000  -0.000000   0.000000   0.000000  -0.000000   0.100000  -0.000000
+	  -0.217265  -0.000000  -0.000000  -0.058632  -0.000000  -0.000000   0.158632
+
+[INFO]: 
+	         Geometry (au)                                       Gradient (au)
+   0.0000000000   0.0000000000   1.1270543617		  -0.0000000000  -0.0000000000  -0.0000108196
+  -0.0000000000   0.0000000000  -1.1270543617		   0.0000000000  -0.0000000000   0.0000108196
+
+[INFO]: 	Current Step Report 
+ 
+	Current energy:      -109.0318679615
+	Energy change for the previous step:
+		Actual       :        -0.0000008444
+		Projected    :        -0.0000000133
+
+[INFO]: 	Energy ratio =   63.54199
+[INFO]: 	Using RFO solution 1.
+[INFO]: 	Determining Cartesian step for fragment 1.
+[INFO]: 	Successfully converged to displaced geometry.
+[INFO]: 	RMS(dx):  6.757e-17 	Max(dx):  1.480e-16 	RMS(dq):  1.455e-12
+[WARNING]: 	Previous geometry is closer to target in internal coordinates, so using that one.
+
+[WARNING]: 	Best geometry has RMS(Delta(q)) = 1.45e-12
+
+[INFO]: 
+
+	        --- Internal Coordinate Step in ANG or DEG, aJ/ANG or AJ/DEG ---
+	-------------------------------------------------------------------------------
+	           Coordinate      Previous         Force          Change          New 
+	           ----------      --------        ------          ------        ------
+	               R(1,2)       1.19282        0.00006        0.00001       1.19283
+	                 X(1)       0.00000        0.00000       -0.00000      -0.00000
+	                 Y(1)       0.00000        0.00000        0.00000       0.00000
+	                 Z(1)       0.59641        0.00003        0.00000       0.59641
+	                 X(2)      -0.00000       -0.00000       -0.00000      -0.00000
+	                 Y(2)       0.00000        0.00000        0.00000       0.00000
+	                 Z(2)      -0.59641       -0.00003       -0.00000      -0.59641
+	-------------------------------------------------------------------------------
+
+[INFO]: 	|target step| :    0.0000135536
+[INFO]: 	gradient     :   -0.0000088341
+[INFO]: 	hessian      :    0.6517937365
+[INFO]: 	Norm of achieved step-size    0.0000135536
+[INFO]: 	Norm of achieved step-size (cart):    0.0000078252
+[INFO]: Molsys:
+
+	                            ===> Fragment 1 <== 
+
+	 Z (Atomic Numbers)          Masses                          Geom                  
+	       7.000000            14.003074         -0.00000000  0.00000000  1.12705989   
+	       7.000000            14.003074         -0.00000000  0.00000000 -1.12705989   
+
+	 - Coordinate -           - BOHR/RAD -       - ANG/DEG -
+	 R(1,2)           =         2.254120           1.192829
+	 X(1)             =        -0.000000          -0.000000
+	 Y(1)             =         0.000000           0.000000
+	 Z(1)             =         1.127060           0.596414
+	 X(2)             =        -0.000000          -0.000000
+	 Y(2)             =         0.000000           0.000000
+	 Z(2)             =        -1.127060          -0.596414
+
+[INFO]: Performing convergence check.
+[INFO]: 
+	                                 ==> Convergence Check <==                                  
+    
+	Measures of convergence in internal coordinates in au.
+    
+	Criteria marked as inactive (o), active & met (*), and active & unmet ( ).
+
+	----------------------------------------------------------------------------------------------
+	   Step    Total Energy     Delta E     Max Force     RMS Force      Max Disp      RMS Disp   
+	----------------------------------------------------------------------------------------------
+	  Convergence Criteria              o    1.50e-05 *    1.00e-05 *    6.00e-05 *    4.00e-05 *
+	----------------------------------------------------------------------------------------------
+	     7    -109.03186796   -8.44e-07 o    7.21e-06 *    3.34e-06 *    1.11e-05 *    5.12e-06 *  ~
+	----------------------------------------------------------------------------------------------
+
+
+[INFO]: 
+	                      ===> Final Convergence Report <===                     
+
+	----------------------------------------------------------------------------
+	|   Required Criteria    |  One or More Criteria  |   Alternate Criteria   |
+	----------------------------------------------------------------------------
+	| [x]     max_force      |                        | [ ]   flat_potential   |
+	| [x]     rms_force      |                        |                        |
+	| [x]      max_disp      |                        |                        |
+	| [x]      rms_disp      |                        |                        |
+	----------------------------------------------------------------------------
+
+
+[INFO]: 	Convergence check returned True
+[INFO]: 	Converged in 7 steps!
+[INFO]: 	Final energy is   -109.0318679614977
+[INFO]: 	Final structure (Angstroms): 
+	Fragment 1 (Ang)
+
+	    N  -0.0000000000   0.0000000000   0.5964144115
+	    N  -0.0000000000   0.0000000000  -0.5964144115
+
+

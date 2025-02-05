@@ -1,0 +1,31 @@
+memory 8800
+# Memory per core (in MB)
+
+molcas $MOLCAS
+# MOLCAS variable
+
+scratchdir /scratch/soubhikm/ethene/3pA/
+# Scratch directory
+
+ncpu 1
+# No. of cpu for EACH parallel run
+
+driver /projectnb/kbravgrp/soubhikm/qcsoftware/molcas_build/pymolcas
+# pymolcas driver path
+
+wfoverlap /projectnb/kbravgrp/soubhikm/qcsoftware/WfOverlap/bin/wfoverlap.x
+# WF-OVERLAP directory
+
+ncpu_avail 28
+# Total no. of cpu for ALL parallel run
+
+delay 0.01
+# Delay between parallel jobs (not needed strictly)
+
+
+rasorb
+# Read RasOrb files for consecutive steps in geometry optimizations (other option is scforb 
+# for SCF orbital guesses on the fly.)
+
+optimizer geometric
+# optimizer chosen (Default is geometric)

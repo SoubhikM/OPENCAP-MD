@@ -1,0 +1,54 @@
+ nsym=  8
+cione,cidrtin,cigradient=1,ndrt=
+getvector : 0 0 0 0 0 0 0 0
+getvector2 : 8, 0 0 0 0 0 0 0 0,   8,  8 
+getvector : 0 0 0 0 0 0 0 0
+getvector2 : 8, 0 0 0 0 0 0 0 0,   8,  8 
+getvector : 3 1 1 0 3 3 3 0
+getvector2 : 8, 3 1 1 0 3 3 3 0,   8,  8 
+getvector : 2 0 0 0 2 0 0 0
+getvector2 : 8, 2 0 0 0 2 0 0 0,   8,  8 
+getvector : 0 0 0 0 0 0 0 0
+getvector2 : 8, 0 0 0 0 0 0 0 0,   8,  8 
+getvector : 6
+getvector2 : 1, 6,   8,1 
+groups of 2 elements,  / frozen core orbitals ,  -1 
+groups of 2 elements,  / frozen virtual orbitals ,  -1 
+groups of 2 elements,  ,  7 
+groups of 2 elements,  ,  19 
+groups of 2 elements,  /internal orbitals ,  -1 
+groups of 1 elements, /occminr,  9 
+groups of 1 elements, /occmaxr,  9 
+groups of 1 elements, /bminr,  9 
+groups of 1 elements, /bmaxr,  9 
+groups of 1 elements, /step masks r,  9 
+groups of 1 elements, /occmin,  13 
+groups of 1 elements, /occmax,  13 
+groups of 1 elements, /bmin,  13 
+groups of 1 elements, /bmax,  13 
+groups of 1 elements, /step masks,  13 
+groups of 1 elements, /step vector disp pairs,  12 
+nintern=14,nreforb=4
+groups of 1 elements, /reference occupations vector ,  13 
+groups of 2 elements,  / frozen core orbitals ,  -1 
+groups of 2 elements,  / frozen virtual orbitals ,  -1 
+groups of 2 elements,  ,  7 
+groups of 2 elements,  ,  19 
+groups of 2 elements,  /internal orbitals ,  -1 
+groups of 1 elements, /occminr,  9 
+groups of 1 elements, /occmaxr,  9 
+groups of 1 elements, /bminr,  9 
+groups of 1 elements, /bmaxr,  9 
+groups of 1 elements, /step masks r,  9 
+groups of 1 elements, /occmin,  13 
+groups of 1 elements, /occmax,  13 
+groups of 1 elements, /bmin,  13 
+groups of 1 elements, /bmax,  13 
+groups of 1 elements, /step masks,  13 
+groups of 1 elements, /step vector disp pairs,  12 
+nintern=14,nreforb=4
+groups of 1 elements, /reference occupations vector ,  13 
+prodciudgin: input_data(*)=Y:N:N:0:5:0:Y::1e-4,1e-4,1e-4,1e-4,1e-4,:1:5:10:1e-4,1e-4,1e-4,1e-4,1e-4,:150:7:10:1e-4,1e-4,1e-4,1e-4,1e-4,:8:3000:50:4:X
+prodciudgin: ncnode=4
+prodciudgin: ncnode (end)=4
+cionem: ncnode =4maxmem,ncpu,nvmax,bandwidth=300081050
