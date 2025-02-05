@@ -31,7 +31,7 @@ setup(
     author_email='soubhikm@bu.edu',
     description='OPENCAP-MD: A package that calculates gradients and couplings on the fly for metastable states molecular dynamics.',
     project_urls={
-        'Source code': "https://github.com/SoubhikM/opencap-md",
+        'Source code': "https://github.com/SoubhikM/OPENCAP-MD",
     },
     packages=find_packages(),
     install_requires=[
@@ -43,6 +43,7 @@ setup(
         'h5py',
         'pyberny',
         'mendeleev',
+        'pyscf',
         'optking',
         'qcelemental'
     ],
