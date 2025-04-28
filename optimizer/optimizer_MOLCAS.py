@@ -51,7 +51,6 @@ import re
 import logging
 import datetime
 import copy
-from mendeleev import element
 #sys.path.append('./../utils/')
 
 script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
@@ -176,9 +175,12 @@ def makeQMin(QMin):
 def make_geomfile(QMin):
     '''Make geometry file in SHARC/COLUMBUS format'''
     geomflines = ''
+    import isotope_mass
     for label, (x, y, z) in zip(QMin['atom_symbols'], QMin['coords']):
+        atomic_weight = isotope_mass.MASSES.get(label)
+        atomic_number = isotope_mass.get_atomic_number(label)
         geomflines += "%s\t%s\t%16.12f\t%16.12f\t%16.12f\t%16.12f\n" % (
-        label, element(label).atomic_number, x, y, z, element(label).atomic_weight)
+        label, atomic_number, x, y, z, atomic_weight)
 
     writefile("%s/geom.restart" % QMin['pwd'], geomflines)
     return
@@ -528,7 +530,7 @@ def _build_QMin(QMin):
             QMin[key] = []
         elif key == 'optimizer':
             QMin[key] = str(value).lower()
-            if QMin[key] == 'optking':
+            if QMin[key] == 'optking' or QMin[key] == 'geometric':
                 if len(line) > 2:
                     QMin['conv'] = str(line[2]).lower()
         elif key == 'debug':
@@ -637,9 +639,12 @@ def main():
                        'dmax', QMin['stepmax']]
 
         outfile = os.path.join(QMin['pwd'], 'QM', "geomeTRIC.log")
+        conv_type = QMin.get('conv') or "gau"
         with open(outfile, "w+") as _outfile:
             m = geometric.optimize.run_optimizer(customengine=CustomEngine(molecule, QMin),
-                                                 converge=conv_params, check=1,
+                                                 converge=conv_params,
+                                                 #convergence_set = conv_type,
+                                                 check=1,
                                                  input=_outfile.name)
 
         print(print_string("Optimized positions of the atoms (Angstrom):", atom_symbols, m.xyzs[-1]))

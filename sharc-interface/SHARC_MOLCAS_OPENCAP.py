@@ -365,9 +365,9 @@ def printheader():
     string = '\n'
     string += '  ' + '=' * 80 + '\n'
     string += '||' + ' ' * 80 + '||\n'
-    string += '||' + ' ' * 27 + 'SHARC - OPENCAP (with MOLCAS) - Interface' + ' ' * 27 + '||\n'
+    string += '||' + ' ' * 20 + 'SHARC - OPENCAP (with MOLCAS) - Interface' + ' ' * 19 + '||\n'
     string += '||' + ' ' * 80 + '||\n'
-    string += '||' + ' ' * 21 + 'Authors: Soubhik Mondal, Ksenia Bravaya,' + ' ' * 20 + '||\n'
+    string += '||' + ' ' * 20 + 'Authors: Soubhik Mondal, Ksenia Bravaya ' + ' ' * 20 + '||\n'
     string += '||' + ' ' * 80 + '||\n'
     string += '||' + ' ' * (36 - (len(version) + 1) // 2) + 'Version: %s' % (version) + ' ' * (
             35 - (len(version)) // 2) + '||\n'
@@ -377,7 +377,6 @@ def printheader():
     string += '||' + ' ' * 80 + '||\n'
     string += '  ' + '=' * 80 + '\n\n'
     print(string)
-
 
 # ======================================================================= #
 
@@ -1002,13 +1001,18 @@ def _opencap_dicts(out, QMin, do_numerical=None):
                "molcas_output": OUTPUT_FILE,
                "rassi_h5": RASSI_FILE}
 
-    cap_dict = {"cap_type": "box",
-                "cap_x": QMin['template']['cap_x'],
-                "cap_y": QMin['template']['cap_y'],
-                "cap_z": QMin['template']['cap_z'],
-                "Radial_precision": "16",
-                "angular_points": "590"}
-
+    if QMin.get('cap_type') == 'voronoi':
+        cap_dict = {"cap_type": "voronoi",
+                    "r_cut": f"{QMin['template']['r_cut']}",
+                    "radial_precision": "16",
+                    "angular_points": "590"}
+    else:
+        cap_dict = {"cap_type": "box",
+                    "cap_x": f"{QMin['template']['cap_x']}",
+                    "cap_y": f"{QMin['template']['cap_y']}",
+                    "cap_z": f"{QMin['template']['cap_z']}",
+                    "Radial_precision": "16",
+                    "angular_points": "590"}
     if do_numerical:
         cap_dict["do_numerical"] = "true"
 
@@ -1132,7 +1136,10 @@ def parse_MOLCAS_Hamiltonian(outfilename, QMin, do_numerical=None, saveRASSI=Tru
             with redirect_stdout(ostr):
                 sys_dict, es_dict, cap_dict = _opencap_dicts(outfilename, QMin, do_numerical)
                 s = pyopencap.System(sys_dict)
-                pc = pyopencap.CAP(s, cap_dict, nroots, _box_cap)
+                if QMin.get('cap_type') == 'box':
+                    pc = pyopencap.CAP(s, cap_dict, nroots, _box_cap)
+                else:
+                    pc = pyopencap.CAP(s, cap_dict, nroots)
                 pc.read_data(es_dict)
                 pc.compute_projected_cap()
                 H_CAP = pc.get_projected_cap()
@@ -3237,14 +3244,15 @@ def readQMin(QMinfilename):
     if 'init' not in QMin and 'samestep' not in QMin:
         QMin['newstep'] = []
 
-    if not any([i in QMin for i in ['h', 'dm', 'grad']]) and 'overlap' in QMin:
-        QMin['h'] = []
+#    if not any([i in QMin for i in ['h', 'dm', 'grad']]) and 'overlap' in QMin:
+
+    QMin['h'] = []
 
     if len(QMin['states']) > 8:
         print('Higher multiplicities than octets are not supported!')
         sys.exit(44)
 
-    if 'h' in QMin:
+    if 'h' in QMin and 'soc' in QMin:
         QMin = removekey(QMin, 'h')
 
     if 'nacdt' in QMin:
@@ -3503,7 +3511,7 @@ def readQMin(QMinfilename):
 
     QMin['template'] = {}
     integers = ['nactel', 'inactive', 'ras2', 'frozen']
-    cap_params = ['cap_eta', 'cap_x', 'cap_y', 'cap_z', 'screening']
+    cap_params = ['cap_eta', 'cap_x', 'cap_y', 'cap_z', 'screening', 'r_cut']
     strings = ['basis', 'method', 'baslib', 'pdft-functional']
     floats = ['ipea', 'imaginary', 'gradaccumax', 'gradaccudefault', 'displ', 'rasscf_thrs_e', 'rasscf_thrs_rot',
               'rasscf_thrs_egrd', 'cholesky_accu']
@@ -3603,7 +3611,15 @@ def readQMin(QMinfilename):
         elif 'xms_correction' in line[0]:
             QMin['xms_correction'] = []
 
-    # SBK: choose any one of the tracking algorithm
+    # CAP parameters, strike out redundant part if needed
+    if QMin['template'].get('r_cut'):
+        QMin['cap_type'] = 'voronoi' # Default?
+        for key in ['cap_x', 'cap_y', 'cap_z']:
+            QMin['template'].pop(key, None)
+    else:
+        QMin['cap_type'] = 'box'
+
+            # SBK: choose any one of the tracking algorithm
     if 'track_all' in QMin and 'track_wfoverlap' in QMin:
         print('Both of these two keywords : "track_wfoverlap","track_all" cannot be used together!')
         sys.exit(581)
@@ -3934,10 +3950,7 @@ def writeMOLCASinput(tasks, QMin):
     for task in tasks:
 
         if task[0] == 'gateway':
-            if QMin['template']['qmmm']:
-                string += '&GATEWAY\nTINKER\nGROUP=NOSYM\nBASIS=%s\n' % (QMin['template']['basis'])
-            else:
-                string += '&GATEWAY\n Expert \n COORD=MOLCAS.xyz\n GROUP=NOSYM\n BASIS=%s\n' % (
+            string += '&GATEWAY\n Expert \n COORD=MOLCAS.xyz\n GROUP=NOSYM\n BASIS=%s\n' % (
                     QMin['template']['basis'])  # SBK added Expert Keyword
 
             if QMin['template']['baslib']:
@@ -4016,8 +4029,8 @@ def writeMOLCASinput(tasks, QMin):
             string += ' ORBLISTING=NOTHING\n PRWF=0.1\n'
 
             if 'grad' in QMin and QMin['gradmode'] < 2:
-                # string += 'THRS=1.0e-10 1.0e-06 1.0e-06\n'
-                string += ' THRS=1.0e-8 1.0e-4 1.0e-4\n'
+                string += ' THRS=1.0e-10 1.0e-06 1.0e-06\n'
+                #string += ' THRS=1.0e-8 1.0e-4 1.0e-4\n'
             else:
                 string += ' THRS=%14.12f %14.12f %14.12f\n' % (
                     QMin['template']['rasscf_thrs_e'], QMin['template']['rasscf_thrs_rot'],
@@ -4029,11 +4042,6 @@ def writeMOLCASinput(tasks, QMin):
             if len(task) >= 6:
                 for a in task[5]:
                     string += a + '\n'
-            if QMin['template']['pcmset']['on']:
-                if task[1] == QMin['template']['pcmstate'][0]:
-                    string += 'RFROOT = %i\n' % QMin['template']['pcmstate'][1]
-                else:
-                    string += 'NONEQUILIBRIUM\n'
             string += '\n'
 
         # SBK added
@@ -4110,8 +4118,6 @@ def writeMOLCASinput(tasks, QMin):
             for i in range(task[2]):
                 string += '%i ' % (i + 1)
             string += '\nOUTPUT=BRIEF\nPRWF=0.1\n'
-            if QMin['template']['pcmset']['on']:
-                string += 'RFPERT\n'
             string += '\n'
 
     return string
@@ -5928,15 +5934,16 @@ def main():
     # Write QMout
     writeQMout(QMin, QMout, QMinfilename)
 
+    # SBK added this
+    if 'pcap' in QMin:
+        savePCAPfiles(QMin, DEBUG=False)
+
     # Remove Scratchfiles from SCRATCHDIR
     if not DEBUG:
         cleanupSCRATCH(QMin['scratchdir'])
         if 'cleanup' in QMin:
             cleanupSCRATCH(QMin['savedir'])
 
-    # SBK added this
-    if 'pcap' in QMin:
-        savePCAPfiles(QMin, DEBUG=False)
     #
     if PRINT or DEBUG:
         print('#================ END ================#')

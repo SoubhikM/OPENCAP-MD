@@ -42,10 +42,8 @@ setup(
         'tabulate',
         'h5py',
         'pyberny',
-        'mendeleev',
         'pyscf',
-        'optking',
-        'qcelemental'
+        'qcelemental>=0.20.0'
     ],
     python_requires='>=3.7',
 )

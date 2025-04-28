@@ -32,7 +32,6 @@ SOFTWARE.
 #####################################################################################
 """
 
-
 import numpy as np
 import sys, os
 import scipy.linalg as LA
@@ -45,7 +44,6 @@ from tabulate import tabulate
 import geometric
 import geometric.molecule
 import h5py
-import os
 import subprocess as sp
 import datetime, time
 from functools import reduce
@@ -56,24 +54,26 @@ import re
 import logging
 import io
 from contextlib import redirect_stdout
-#sys.path.append('./../utils/')
+
+# sys.path.append('./../utils/')
 
 script_dir = os.path.dirname(os.path.abspath(sys.argv[0]))
-utils_dir = os.path.join(script_dir, "../utils")
+utils_dir = os.path.join(script_dir, "../utils/")
 sys.path.append(utils_dir)
 
-from read_civfl_w_sym import civfl_ana
 from isotope_mass import get_atom_symbol
+from read_civfl_w_sym import civfl_ana
 
-EV_TO_AU = 1/27.21138602
+EV_TO_AU = 1 / 27.21138602
 ANG_TO_BOHR = 1.8897259886
-PRINT= False
+PRINT = False
 
 
 class ParseFile:
     """
     Class to parse COLUMBUS gradients and NAC files
     """
+
     def __init__(self, fDIR, nroots, QMin):
         self.dir = copy.deepcopy(fDIR)
         self.nroots = nroots
@@ -142,8 +142,9 @@ def grad_mat(_grad, _nac, H0, atom, direction):
     for _state1 in range(nstates):
         grad[_state1, _state1] = _grad[_state1][atom][direction]
         for _state2 in range(_state1 + 1, nstates):
-            grad[_state1, _state2] = _nac[_state1, _state2][atom][direction]* \
-                                     -1.0*(H0[_state2, _state2] - H0[_state1, _state1]) #A negative sign is required!!
+            grad[_state1, _state2] = _nac[_state1, _state2][atom][direction] * \
+                                     -1.0 * (H0[_state2, _state2] - H0[
+                _state1, _state1])  # A negative sign is required!!
             grad[_state2, _state1] = grad[_state1, _state2]
 
     return grad
@@ -166,29 +167,28 @@ def get_capmat_H0_opencap(QMin, ref_en=True):
                    "molecule": "molden"}
     s = pyopencap.System(molden_dict)
     cap_dict = {"cap_type": "box",
-                "cap_x": "%s"%QMin['cap_x'],
-                "cap_y": "%s"%QMin['cap_y'],
-                "cap_z": "%s"%QMin['cap_z'],
+                "cap_x": "%s" % QMin['cap_x'],
+                "cap_y": "%s" % QMin['cap_y'],
+                "cap_z": "%s" % QMin['cap_z'],
                 "Radial_precision": "16",
                 "angular_points": "590",
-                "do_numerical":"true"}
+                "do_numerical": "true"}
 
     pc = pyopencap.CAP(s, cap_dict, nstates)
 
-    if QMin['calculation']=='mcscf':
+    if QMin['calculation'] == 'mcscf':
         parser = colparser_mc('molden_mo_mc.sp')
     else:
         parser = colparser('molden_mo_mc.sp', 'tranls')
-
 
     if QMin['calculation'] == 'mcscf':
         H0 = parser.get_H0(filename='%s/mcscfsm' % pathREAD)
         if ref_en:
             ref_energy = parser.get_H0(filename='%s/mcscfsm_neutral' % pathREAD)[0][0]
     else:
-        H0 = parser.get_H0('eci', filename='%s/ciudgsm'%pathREAD)
+        H0 = parser.get_H0('eci', filename='%s/ciudgsm' % pathREAD)
         if ref_en:
-            ref_energy = np.min(parser.get_H0('eci', filename='%s/ciudgsm_neutral'%pathREAD))
+            ref_energy = np.min(parser.get_H0('eci', filename='%s/ciudgsm_neutral' % pathREAD))
 
     if ref_en:
         sys.stdout.write("\nRef energy : %s\n" % ref_energy)
@@ -232,7 +232,8 @@ def get_capmat_H0_opencap(QMin, ref_en=True):
     sys.stdout.write(f"{log_stream.getvalue()}")
     sys.stdout.write(f"{ostr.getvalue()}")
     _end = datetime.datetime.now()
-    sys.stdout.write("\n|%s %s %s|\n\n" % ("=" * 20, "End of OpenCAP run (%s Seconds)." % time_string(_start, _end), "=" * 20))
+    sys.stdout.write(
+        "\n|%s %s %s|\n\n" % ("=" * 20, "End of OpenCAP run (%s Seconds)." % time_string(_start, _end), "=" * 20))
     sys.stdout.flush()
 
     ao_ovlp = reduce(np.dot, (LA.inv(parser.mo_coeff).T, LA.inv(parser.mo_coeff)))
@@ -258,6 +259,7 @@ def _biorthogonalize(Leigvc, Reigvc):
     Leigvc = Leigvc.T
     return Leigvc, Reigvc
 
+
 def _sort_eigenvectors(eigv, eigvc):
     '''
     Sort eigen vector columns according to the ascending order of
@@ -271,6 +273,7 @@ def _sort_eigenvectors(eigv, eigvc):
     eigvc = eigvc[:, idx]
     return eigv, eigvc
 
+
 def ZO_TO_DIAG_energy(H0, W, eta_opt, corrected=False):
     """
     Diagonalize ZO energy matrix
@@ -280,7 +283,7 @@ def ZO_TO_DIAG_energy(H0, W, eta_opt, corrected=False):
     :param corrected: To ask for 1st order corrected energies or not (Default is False)
     :return: complex eigen values and eigen vectors
     """
-    H_total = H0 + 1.0j * eta_opt * 0.5*(W+W.T)
+    H_total = H0 + 1.0j * eta_opt * 0.5 * (W + W.T)
     nstates = len(H0)
     eigv, Reigvc = _sort_eigenvectors(*LA.eig(H_total))
 
@@ -288,7 +291,6 @@ def ZO_TO_DIAG_energy(H0, W, eta_opt, corrected=False):
     W_sqrt = LA.sqrtm(W)
     W_inv_sqrt = LA.inv(W_sqrt)
     Reigvc = reduce(np.dot, (Reigvc, W_inv_sqrt))
-
 
     corrected_energies = []
     for i in range(0, nstates):
@@ -300,16 +302,17 @@ def ZO_TO_DIAG_energy(H0, W, eta_opt, corrected=False):
         corrected_energies.append(eigv[i] - eta_opt * total)
     corrected_energies = np.asarray(corrected_energies)
 
-
     if corrected:
         return corrected_energies, Reigvc, Reigvc
     else:
         return eigv, Reigvc, Reigvc
 
+
 def time_string(starttime, endtime):
     runtime = endtime - starttime
     total_seconds = runtime.days * 24 * 3600 + runtime.seconds + runtime.microseconds / 1.e6
     return total_seconds
+
 
 def get_corrected_GMAT(G_MCH, RotMATnew, QMin):
     """
@@ -319,14 +322,14 @@ def get_corrected_GMAT(G_MCH, RotMATnew, QMin):
     :param QMin: dict with QM info
     :return: Full gradient matrix (G^DIAG)
     """
-    pathREAD = os.path.join(QMin['newpath'],'CAP_INPS')
+    pathREAD = os.path.join(QMin['newpath'], 'CAP_INPS')
     Reigvc = RotMATnew['Reigvc']
     Leigvc = RotMATnew['Leigvc']
 
     os.chdir(pathREAD)
     nstates = QMin['nstates']
 
-    if QMin['calculation']=='mcscf':
+    if QMin['calculation'] == 'mcscf':
         parser = colparser_mc('molden_mo_mc.sp')
     else:
         parser = colparser('molden_mo_mc.sp', 'tranls')
@@ -336,12 +339,11 @@ def get_corrected_GMAT(G_MCH, RotMATnew, QMin):
     s = pyopencap.System(molden_dict)
 
     cap_dict = {"cap_type": "box",
-                "cap_x": "%s"%QMin['cap_x'],
-                "cap_y": "%s"%QMin['cap_y'],
-                "cap_z": "%s"%QMin['cap_z'],
+                "cap_x": "%s" % QMin['cap_x'],
+                "cap_y": "%s" % QMin['cap_y'],
+                "cap_z": "%s" % QMin['cap_z'],
                 "Radial_precision": "16",
                 "angular_points": "590", "do_numerical": "true"}
-
 
     pCAPG = pyopencap.CAP(s, cap_dict, nstates)
 
@@ -386,7 +388,8 @@ def get_corrected_GMAT(G_MCH, RotMATnew, QMin):
     sys.stdout.write(f"{log_stream.getvalue()}")
     sys.stdout.write(f"{ostr.getvalue()}")
     _end = datetime.datetime.now()
-    sys.stdout.write("\n|%s %s %s|\n\n" % ("=" * 20, "End of OpenCAP run (%s Seconds)." % time_string(_start, _end), "=" * 20))
+    sys.stdout.write(
+        "\n|%s %s %s|\n\n" % ("=" * 20, "End of OpenCAP run (%s Seconds)." % time_string(_start, _end), "=" * 20))
     sys.stdout.flush()
 
     G_DIAG_CORR = []
@@ -395,16 +398,21 @@ def get_corrected_GMAT(G_MCH, RotMATnew, QMin):
     for idx, symbol in enumerate(QMin['atom_symbols']):
         if symbol == 'X': continue
 
-        G_DIAG_CORR.append({'x': Leigvc.T @ (G_MCH[idx]['x']  + 1.0j * float(QMin['eta_opt']) * (_WG[idx]['x']+_WD[idx]['x'])) @ Reigvc,
-                            'y': Leigvc.T @ (G_MCH[idx]['y']  + 1.0j * float(QMin['eta_opt']) * (_WG[idx]['y']+_WD[idx]['y'])) @ Reigvc,
-                            'z': Leigvc.T @ (G_MCH[idx]['z']  + 1.0j * float(QMin['eta_opt']) * (_WG[idx]['z']+_WD[idx]['z'])) @ Reigvc})
-        _just_grad_correct.append({'x': (Leigvc.T @ (1.0j * float(QMin['eta_opt']) * (_WG[idx]['x']+_WD[idx]['x'])) @ Reigvc).real,
-                                   'y': (Leigvc.T @ (1.0j * float(QMin['eta_opt']) * (_WG[idx]['y']+_WD[idx]['y'])) @ Reigvc).real,
-                                   'z': (Leigvc.T @ (1.0j * float(QMin['eta_opt']) * (_WG[idx]['z']+_WD[idx]['z'])) @ Reigvc).real})
+        G_DIAG_CORR.append({'x': Leigvc.T @ (
+                G_MCH[idx]['x'] + 1.0j * float(QMin['eta_opt']) * (_WG[idx]['x'] + _WD[idx]['x'])) @ Reigvc,
+                            'y': Leigvc.T @ (G_MCH[idx]['y'] + 1.0j * float(QMin['eta_opt']) * (
+                                    _WG[idx]['y'] + _WD[idx]['y'])) @ Reigvc,
+                            'z': Leigvc.T @ (G_MCH[idx]['z'] + 1.0j * float(QMin['eta_opt']) * (
+                                    _WG[idx]['z'] + _WD[idx]['z'])) @ Reigvc})
+        _just_grad_correct.append(
+            {'x': (Leigvc.T @ (1.0j * float(QMin['eta_opt']) * (_WG[idx]['x'] + _WD[idx]['x'])) @ Reigvc).real,
+             'y': (Leigvc.T @ (1.0j * float(QMin['eta_opt']) * (_WG[idx]['y'] + _WD[idx]['y'])) @ Reigvc).real,
+             'z': (Leigvc.T @ (1.0j * float(QMin['eta_opt']) * (_WG[idx]['z'] + _WD[idx]['z'])) @ Reigvc).real})
 
     os.chdir(QMin['pwd'])
 
     return G_DIAG_CORR, _just_grad_correct
+
 
 def write_positions_to_file(file_path, atom_symbols, positions, header=True):
     lines_to_write = []
@@ -418,6 +426,7 @@ def write_positions_to_file(file_path, atom_symbols, positions, header=True):
 
     with open(file_path, 'w') as f:
         f.write("\n".join(lines_to_write))
+
 
 def writefile(filename, content):
     # content can be either a string or a list of strings
@@ -434,6 +443,7 @@ def writefile(filename, content):
     except IOError:
         print('Could not write to file %s!' % (filename))
         sys.exit(13)
+
 
 def getGhostCoord(coords, QMin, geomSUPPL=None, ghidx=1):
     """
@@ -464,13 +474,14 @@ def getGhostCoord(coords, QMin, geomSUPPL=None, ghidx=1):
     total_mass = 0.0
 
     for iatom, atom in enumerate(geo):
-        if atom_symbols[iatom]=='X': continue
+        if atom_symbols[iatom] == 'X': continue
         total_mass += isotope_mass.MASSES.get(atom_symbols[iatom])
         _coord = np.array([isotope_mass.MASSES.get(atom_symbols[iatom]) * coord for coord in atom])
         mass_coord += _coord
 
     coord_com = (mass_coord / total_mass)
     return coord_com
+
 
 def parse_geom_from_daltaoin(path, position, QMin):
     atom_symbols = QMin['atom_symbols']
@@ -485,12 +496,17 @@ def parse_geom_from_daltaoin(path, position, QMin):
 
     # Synchronize QMin['atom_symbols'] with atom_symbols_daltaoin if necessary
     if atom_symbols_daltaoin != atom_symbols:
-        QMin['atom_symbols'] = copy.deepcopy(atom_symbols_daltaoin)
+        if QMin['symmetry']:
+            extra = [x for i, x in enumerate(atom_symbols_daltaoin) if QMin['atom_symbols'].count(x) < atom_symbols_daltaoin[:i+1].count(x)]
+            QMin['atom_symbols'] +=extra
+        else:
+            QMin['atom_symbols'] = copy.deepcopy(atom_symbols_daltaoin)
+
 
     ghostcoord = getGhostCoord(position, QMin)
     position_list = position.tolist()
 
-    for i, symbol in enumerate(atom_symbols_daltaoin):
+    for i, symbol in enumerate(QMin['atom_symbols']):
         if symbol == 'X':
             position_list.insert(i, ghostcoord)
 
@@ -499,8 +515,7 @@ def parse_geom_from_daltaoin(path, position, QMin):
     return position_ghostadded
 
 
-
-def symmetrize_geometry(geom_w_symbols):
+def symmetrize_geometry(geom_w_symbols, QMin):
     """
     Symmetrize the input geometry based on the unique geometry. (A very shoddy solution, alas!)
 
@@ -515,31 +530,33 @@ def symmetrize_geometry(geom_w_symbols):
     from pyscf import gto
     from pyscf.grad.rhf import symmetrize
 
-    mol = gto.M(unit='bohr',verbose=0)
-    mol.atom = geom_w_symbols
+    for iatom, atom in enumerate(geom_w_symbols):
+        if atom[0] == 'X':
+            basis = {'X': gto.basis.load('sto3g', 'H')}
 
+    mol = gto.M(unit='bohr', verbose=0, basis=basis)
+    mol.atom = geom_w_symbols
+    symmetry_col = readfile(os.path.join(QMin['newpath'], 'geom.unik'))[0].strip()
+    #mol.symmetry = symmetry_col
     mol.symmetry = True
     mol.build()
-    #print("Molecular symmetry group:", mol.groupname)
-    symmetry_col = readfile(os.path.join(QMin['newpath'], 'geom.unik'))[0].strip()
+
     mol.groupname = copy.deepcopy(symmetry_col)
     mol.topgroup = copy.deepcopy(symmetry_col)
 
-    #Symmetrize the geometry
+    # Symmetrize the geometry
     symmetrized_geom = symmetrize(mol, mol.atom_coords())
 
     return np.asarray(symmetrized_geom)
 
-
 def run_unik(path, QMin):
     """
     Run $COLUMBUS/unik.gets.x to generate symmetry unique atoms
-    (may be redundant in futuew)
+    (may be redundant in future)
     :param path: Path to run the program
     :param QMin:
     :return: symmetry unique atoms' geometries
     """
-    colpath = QMin.get('columbus', os.environ.get('COLUMBUS'))
 
     rotmax = np.eye(3, dtype=int)
     print("**Warning**\n  Not rotating the given geom, rotmax is diagonal with element 1 !\n\n")
@@ -547,26 +564,21 @@ def run_unik(path, QMin):
         for row in rotmax:
             f.write(' '.join(map(str, row)) + '\n')
 
-    stdoutfilename = os.path.join(path, 'unik.gets.out')
-    stderrfilename = os.path.join(path, 'unik.gets.error')
+    reuturncode = call_colprog('unik.gets', QMin, workdir=path)
+    if reuturncode.get('unik.gets') != 0:
+        sys.exit(f"{'unik.gets'} returned error with errorcode: {reuturncode.get('unik.gets')}")
+    else:
+        unik_flines = readfile(os.path.join(path, 'geom.unik'))
+        geom_unik = []
+        symbols_unik = []
+        for idx, line in enumerate(unik_flines):
+            items = line.split()
+            if len(items) == 4:
+                symbols_unik.append(get_atom_symbol(int(items[0])))
+                geom_unik.append([float(i) for i in items[1:]])
 
-    with open(stdoutfilename, 'w') as stdoutfile, open(stderrfilename, 'w') as stderrfile:
-        stringrun = [os.path.join(colpath, 'unik.gets.x')]
-        process = sp.run(stringrun, cwd=path, stdout=stdoutfile, stderr=stderrfile, shell=False)
-        if process.returncode != 0:
-            raise sp.CalledProcessError(process.returncode, stringrun)
-        else:
-            unik_flines = readfile(os.path.join(path, 'geom.unik'))
-            geom_unik = []
-            symbols_unik = []
-            for idx, line in enumerate(unik_flines):
-                items = line.split()
-                if len(items) == 4:
-                    symbols_unik.append(get_atom_symbol(int(items[0])))
-                    geom_unik.append([float(i) for i in items[1:]])
-
-            symbols_unik.append(get_atom_symbol(int(items[0])))
-            return symbols_unik, np.asarray(geom_unik)
+        symbols_unik.append(get_atom_symbol(int(items[0])))
+        return symbols_unik, np.asarray(geom_unik)
 
 
 def make_daltaoin(path, new_positions, QMin):
@@ -595,21 +607,22 @@ def make_daltaoin(path, new_positions, QMin):
     for idx, line in enumerate(daltstring):
         if len(line.split()) and line.split()[-1] == '*':
             splitlines = line.split()
-            #atom_ct = int(line.split()[1])
-            if splitlines[0]==atom_symbols[atom_ct]:
+            # atom_ct = int(line.split()[1])
+            if splitlines[0] == atom_symbols[atom_ct]:
                 splitlines[2] = "{:.17f}".format(_positions[atom_ct][0])[:17]
                 splitlines[3] = "{:.17f}".format(_positions[atom_ct][1])[:17]
                 splitlines[4] = "{:.17f}".format(_positions[atom_ct][2])[:17]
-                atom_ct +=1
+                atom_ct += 1
             else:
                 print('Mismatch in supplied daltaoin and geom file ordering')
                 sys.exit(123)
             daltstring[idx] = '%s  %s   %s   %s   %s       %s\n' % (splitlines[0], splitlines[1],
-                                                         splitlines[2], splitlines[3],
-                                                         splitlines[4], splitlines[5])
+                                                                    splitlines[2], splitlines[3],
+                                                                    splitlines[4], splitlines[5])
 
     writefile(daltaoinfile, daltstring)
     return
+
 
 def make_colfiles(path, new_positions, QMin, fname):
     atom_symbols = QMin['atom_symbols']
@@ -620,7 +633,7 @@ def make_colfiles(path, new_positions, QMin, fname):
     for idx, line in enumerate(iargosky):
 
         if atom_ct < len(atom_symbols):
-            if line.startswith(atom_symbols[atom_ct]) and len(iargosky[idx + 1].split())==3:
+            if line.startswith(atom_symbols[atom_ct]) and len(iargosky[idx + 1].split()) == 3:
                 splitlines = iargosky[idx + 1].split()
                 splitlines[0] = "{:.17f}".format(new_positions[atom_ct][0])[:17]
                 splitlines[1] = "{:.17f}".format(new_positions[atom_ct][1])[:17]
@@ -631,6 +644,7 @@ def make_colfiles(path, new_positions, QMin, fname):
     writefile(iargfile, iargosky)
 
     return
+
 
 def make_geom(path, new_positions, QMin):
     """
@@ -659,19 +673,21 @@ def make_geom(path, new_positions, QMin):
             splitlines[4] = "{:11.8f}".format(new_positions[atom_ct][2])[:11]
             splitlines[5] = "{:11.8f}".format(atom_mass)[:11]
             string = ' '
-#            string += '\t'.join(splitlines)+'\n'
-            string +=splitlines[0]
-            string += ' '*5+splitlines[1]
-            string += ' '*3 + splitlines[2]
-            string += ' '*3 + splitlines[3]
-            string += ' '*3 + splitlines[4]
-            string += ' '*2 + splitlines[5]
-            string +='\n'
+            #            string += '\t'.join(splitlines)+'\n'
+            string += splitlines[0]
+            string += ' ' * 5 + splitlines[1]
+            string += ' ' * 3 + splitlines[2]
+            string += ' ' * 3 + splitlines[3]
+            string += ' ' * 3 + splitlines[4]
+            string += ' ' * 2 + splitlines[5]
+            string += '\n'
         else:
-            print('Mismatch in supplied coordinates and geom file ordering')
+            print('Mismatch in supplied coordinates and geom file ordering\n'
+                  'If ghost atom is built in daltaoin file use "ghost_atom" keyword in COLUMBUS.template.\n')
+            sys.exit(123)
 
         geomlines[idx] = string
-        atom_ct +=1
+        atom_ct += 1
 
     writefile(geomfile, geomlines)
     geomfile_restart = os.path.join(QMin['pwd'], 'geom.restart')
@@ -682,6 +698,7 @@ def make_geom(path, new_positions, QMin):
                 f.write(line)
 
     return
+
 
 def make_transmomin(path, QMin):
     """
@@ -699,11 +716,11 @@ def make_transmomin(path, QMin):
     mcdeninfile = os.path.join(path, 'mcdenin')
 
     string = ''
-    string +='MCSCF\n'
+    string += 'MCSCF\n'
     for i in range(QMin['nstates']):
-        string +='1\t%i\t1\t%i\n' % (i + 1, i + 1)
+        string += '1\t%i\t1\t%i\n' % (i + 1, i + 1)
         for j in range(i + 1, QMin['nstates']):
-            string +='1\t%i\t1\t%i\n' % (i + 1, j + 1)
+            string += '1\t%i\t1\t%i\n' % (i + 1, j + 1)
     writefile(transmominfile, string)
     writefile(mcdeninfile, string)
 
@@ -744,7 +761,6 @@ def create_inp(position, QMin, iter):
 
     dir_input = QMin.get('inputdir', os.path.join(str(QMin['pwd']), 'copyfiles/'))
 
-
     dir_new_NEU = os.path.join(path, 'NEUTRAL')
     dir_new_AN = os.path.join(path, 'ANION')
 
@@ -764,12 +780,22 @@ def create_inp(position, QMin, iter):
     make_geom(path, position_ghostadded, QMin)
     make_colfiles(path, position_ghostadded, QMin, fname='iargosky')
     make_colfiles(path, position_ghostadded, QMin, fname='inpcol')
-    make_daltaoin(path, position_ghostadded, QMin)
-    # Redundant, cause unik.gets.x  and hernew.x automatically does this (daltaoin-->daltaoin.new)!
+    # make_daltaoin(path, position_ghostadded, QMin)
+    # ^^ Redundant, cause unik.gets.x and hernew.x automatically does this (daltaoin-->daltaoin.new)!
+
+    # 1. Generate symmetry unique atoms: geom.unik file
+    run_unik(path, QMin)
+    # 2. Call hernew.x and create daltaoin.new
+    reuturncode = call_colprog('hernew', QMin, workdir=path)
+    if reuturncode.get('hernew') == 0:
+        # 3. copy daltaoin.new to daltaoin
+        shutil.copy(os.path.join(path, 'daltaoin.new'), os.path.join(path, 'daltaoin'))
+    else:
+        make_daltaoin(path, position_ghostadded, QMin)
 
     if QMin['symmetry']:
-        geom_w_symbols = [[symbol]+geo.tolist() for (symbol, geo) in zip(QMin['atom_symbols'], position_ghostadded)]
-        symmetrized_geometry = symmetrize_geometry(geom_w_symbols)
+        geom_w_symbols = [[symbol] + geo.tolist() for (symbol, geo) in zip(QMin['atom_symbols'], position_ghostadded)]
+        symmetrized_geometry = symmetrize_geometry(geom_w_symbols, QMin)
         if not np.allclose(symmetrized_geometry, position_ghostadded):
             sys.stdout.write("\n\n*** Warning: Given geom and symmetrized geoms are not same!\n")
             sys.stdout.write("\tpyscf.grad.rhfsymmetrize module is used, current geometry (before alignment)!\n")
@@ -794,13 +820,12 @@ def create_inp(position, QMin, iter):
         QMin['coords'] = copy.deepcopy(symmetrized_geometry)
         make_geom(path, symmetrized_geometry, QMin)
 
-
-    if QMin['calculation']=='mcscf':
+    if QMin['calculation'] == 'mcscf':
         make_transmomin(dir_new_AN, QMin)
 
     for file in files_to_copy:
-        shutil.copy("%s/%s"%(path, file), dir_new_NEU)
-        shutil.copy("%s/%s"%(path, file), dir_new_AN)
+        shutil.copy("%s/%s" % (path, file), dir_new_NEU)
+        shutil.copy("%s/%s" % (path, file), dir_new_AN)
 
     if iter > 0 and 'mcscf_guess' in QMin:
         ctrlfile = os.path.join(path, 'control.run')
@@ -832,19 +857,18 @@ def modify_ciudgin_tol(path, QMin, iroot=None):
                 pass
 
     if QMin.get('rtolci'):
-         rtolci = QMin['rtolci']
-
+        rtolci = QMin['rtolci']
 
     if iroot:
         while True:
             if rtolci[iroot] < 1.0E-1:
                 rtolci[iroot] *= 10.0
                 sys.stdout.write(
-                    f"\n\n** Warning: Lowering RTOLCI in ciudgin for root {iroot+1} by 10 fold. **\n")
+                    f"\n\n** Warning: Lowering RTOLCI in ciudgin for root {iroot + 1} by 10 fold. **\n")
                 sys.stdout.flush()
                 break
             else:
-                iroot -=1
+                iroot -= 1
 
     string = ''
     for idx, line in enumerate(flines):
@@ -859,6 +883,7 @@ def modify_ciudgin_tol(path, QMin, iroot=None):
 
     QMin['rtolci'] = rtolci
 
+
 def modify_cigrdin(path, QMin):
     '''
     Changes tolerate limits in cigridin
@@ -866,6 +891,7 @@ def modify_cigrdin(path, QMin):
     :param QMin:
     :return: New cigridin file with modified tolerance
     '''
+
     def _extract_tols(QMin, fname):
         lines = readfile(fname)
         tol_pattern = re.compile(r"(\w*tol\w*)\s*=\s*([\d.eE+-]+)")
@@ -884,8 +910,8 @@ def modify_cigrdin(path, QMin):
              f"fresaa = 1, fresvv = 1,\n" \
              f"mdir = 1,\n" \
              f"cdir = 1,\n" \
-             f"rtol = {QMin.get('rtol', 1e-6)*10.0}, dtol = {QMin.get('dtol', 1e-6)*10.0},\n" \
-             f"wndtol =  {QMin.get('wndtol', 1e-7)*10.0}, wnatol = {QMin.get('wnatol', 1e-7)*10.0}, wnvtol =  {QMin.get('wnvtol', 1e-7)*10.0}\n" \
+             f"rtol = {QMin.get('rtol', 1e-6) * 10.0}, dtol = {QMin.get('dtol', 1e-6) * 10.0},\n" \
+             f"wndtol =  {QMin.get('wndtol', 1e-7) * 10.0}, wnatol = {QMin.get('wnatol', 1e-7) * 10.0}, wnvtol =  {QMin.get('wnvtol', 1e-7) * 10.0}\n" \
              f"nadcalc = 3\n" \
              f"samcflag = 0\n" \
              f"& end"
@@ -895,24 +921,26 @@ def modify_cigrdin(path, QMin):
         f.write(string)
 
 
-def call_colprog(prog, QMin):
+def call_colprog(prog, QMin, workdir=None):
     """
     Calls available COLUMBUS binaries
     :param prog: program to call (hernew, dalton, tran, cigrd etc.)
     :param QMin:
-    :return:
+    :param workdir: Specify the work directory, if not present run in QMin['savedir']
+    :return: return code (dict: {prog: errorcode})
     """
-    path = QMin['savedir']
 
-    stdoutfilename = os.path.join(path, f'{prog}.out')
-    stderrfilename = os.path.join(path, f'{prog}.error')
+    workdir = QMin['savedir'] if workdir is None else workdir
+
+    stdoutfilename = os.path.join(workdir, f'{prog}.out')
+    stderrfilename = os.path.join(workdir, f'{prog}.error')
     colpath = QMin.get('columbus', os.environ.get('COLUMBUS'))
 
     with open(stdoutfilename, 'w') as stdoutfile, open(stderrfilename, 'w') as stderrfile:
-        stringrun = [os.path.join(colpath, f'{prog}.x'), '-m', '%s' % (str(QMin['memory']))]
+        stringrun = [os.path.join(colpath, f'{prog}.x'), '-m', '%s' % (str(QMin['memory'])), '-nproc %s'%QMin['ncpu']]
 
         try:
-            process = sp.run(stringrun, cwd=path, stdout=stdoutfile, stderr=stderrfile, shell=False)
+            process = sp.run(stringrun, cwd=workdir, stdout=stdoutfile, stderr=stderrfile, shell=False)
             if process.returncode != 0:
                 print(f"Error: Program '{prog}' failed with return code {process.returncode}.")
                 print(f"Command: {' '.join(stringrun)}")
@@ -924,7 +952,7 @@ def call_colprog(prog, QMin):
             raise
             # Re-raise the exception after logging the error details
 
-    return {prog:process.returncode}
+    return {prog: process.returncode}
 
 
 def extract_allkeys(cidict, fname):
@@ -936,6 +964,7 @@ def extract_allkeys(cidict, fname):
         for match in matches:
             key, value = match
             cidict[key] = float(value) if 'tol' in key else int(value)
+
 
 def call_cigrd(QMin):
     """
@@ -955,7 +984,7 @@ def call_cigrd(QMin):
     cigrdin = os.path.join(path, 'cigrdin')
     extract_allkeys(cidict, cigrdin)
     # Set QMin nadcalc variable manually to zero
-    cidict['nadcalc']= 0
+    cidict['nadcalc'] = 0
 
     string = '& input\n'
     for key in cidict:
@@ -1000,16 +1029,16 @@ def call_cigrd(QMin):
         traceback.print_exc()
         print("\n\n** Trying to generate abacusin! It may encounter error in dalton run!**\n\n")
         abacsustring = "**DALTON INPUT \n" \
-                   ".PROPERTIES \n" \
-                   ".PRINT\n" \
-                   "  3\n" \
-                   "**ABACUS\n" \
-                   ".MOLGRA\n" \
-                   ".COLBUS\n" \
-                   "*READIN\n" \
-                   ".MAXPRI\n" \
-                   "  25\n" \
-                   "**END OF INPUTS"
+                       ".PROPERTIES \n" \
+                       ".PRINT\n" \
+                       "  3\n" \
+                       "**ABACUS\n" \
+                       ".MOLGRA\n" \
+                       ".COLBUS\n" \
+                       "*READIN\n" \
+                       ".MAXPRI\n" \
+                       "  25\n" \
+                       "**END OF INPUTS"
 
     with open('daltcomm', 'w') as f:
         f.write(abacsustring)
@@ -1029,12 +1058,13 @@ def call_cigrd(QMin):
     lines = readfile('cartgrd')
     for line in lines:
         string += line
-    string +='\n'
+    string += '\n'
 
     os.chdir(prevdir)
     shutil.rmtree(QMin['savedir'], ignore_errors=True)
 
     return string
+
 
 def call_nacgrad(QMin):
     """
@@ -1056,7 +1086,7 @@ def call_nacgrad(QMin):
     cigrdin = os.path.join(path, 'cigrdin')
     extract_allkeys(cidict, cigrdin)
     # Set QMin nadcalc variable to 3
-    cidict['nadcalc']= 3
+    cidict['nadcalc'] = 3
     _nacpairs = QMin['pairs']
 
     _string = '& input\n'
@@ -1065,7 +1095,7 @@ def call_nacgrad(QMin):
 
     if not cidict.get('assume_fc'):
         _string += f"assume_fc=0\n"
-    _string +=f' drt1=1\n root1={_nacpairs[0]}\n drt2=1\n root2={_nacpairs[1]}\n'
+    _string += f' drt1=1\n root1={_nacpairs[0]}\n drt2=1\n root2={_nacpairs[1]}\n'
     _string += '& end'
 
     with open(cigrdin, 'w') as f:
@@ -1113,7 +1143,7 @@ def call_nacgrad(QMin):
     return_codes.append(rcode)
 
     # Call NAC CSF part calculation
-    shutil.copy("cid1trfl","modens")
+    shutil.copy("cid1trfl", "modens")
     if QMin['calculation'] != 'mcscf':
         transtring = '&input\n denopt=1\n trdens=1\n tr1e=1\n&end'
     else:
@@ -1122,10 +1152,10 @@ def call_nacgrad(QMin):
         for idx, line in enumerate(traninflines):
             if 'end' in line:
                 transtring += ' trdens=1\n tr1e=1\n'
-                transtring +=line
+                transtring += line
                 break
             else:
-                transtring +=line
+                transtring += line
 
     with open("tranin", 'w') as f:
         f.write(transtring)
@@ -1160,7 +1190,7 @@ def call_nacgrad(QMin):
     rcode = call_colprog('dalton', QMin)
     return_codes.append(rcode)
 
-    dE = QMin['energy_pairs'][0]-QMin['energy_pairs'][1]
+    dE = QMin['energy_pairs'][0] - QMin['energy_pairs'][1]
     lines = readfile(f'nadxfl')
     nadx, nady, nadz = [], [], []
     for line in lines:
@@ -1212,7 +1242,7 @@ def call_nacgrad(QMin):
         string += line
     string += '\n'
 
-    _fname = "%s/GRADIENTS/cartgrd.nad.drt1.state%s.drt1.state%s.sp" % (QMin['maindir'],_nacpairs[0] ,_nacpairs[1])
+    _fname = "%s/GRADIENTS/cartgrd.nad.drt1.state%s.drt1.state%s.sp" % (QMin['maindir'], _nacpairs[0], _nacpairs[1])
     shutil.copy('cartgrd_full', _fname)
 
     endtime = datetime.datetime.now()
@@ -1222,6 +1252,7 @@ def call_nacgrad(QMin):
     os.chdir(prevdir)
     shutil.rmtree(QMin['savedir'], ignore_errors=True)
     return string
+
 
 def process_jobs(QMin1):
     '''
@@ -1234,6 +1265,7 @@ def process_jobs(QMin1):
     elif 'nac_branch' in QMin1:
         logstr = call_nacgrad(QMin1)
     return logstr
+
 
 def run_gradients(joblist, _run_args, QMin):
     """
@@ -1258,13 +1290,15 @@ def run_gradients(joblist, _run_args, QMin):
                 time.sleep(jobset[job].get('delay', 0))
 
     with open(os.path.join(QMin['savedir'], 'GRAD.ZO.log'), 'a+') as f:
-        f.write('\n\n'+'--'*10+f" Printing parallel gradient and coupling calculation: Iteration {QMin['iter']} "+'--'*10+'\n\n')
+        f.write(
+            '\n\n' + '--' * 10 + f" Printing parallel gradient and coupling calculation: Iteration {QMin['iter']} " + '--' * 10 + '\n\n')
 
         for i, jobset in enumerate(joblist):
             if not jobset:
                 continue
             for job in jobset:
-                    f.write(log_entries[job])
+                f.write(log_entries[job])
+
 
 def create_jobdir(path, joblist):
     """
@@ -1274,8 +1308,8 @@ def create_jobdir(path, joblist):
     :return: Prepared individual work directories (set up scratchdir variable in COLUMBUS resources file)
     """
     _files_to_copy = ["mcscfin", "cidrtfl", "mcdrtfl*", "restart",
-                     "mcdftfl*", "mcd2fl", "mcd1fl", "mcoftfl*",
-                     "hdiagf", "mchess", 'moints', 'mocoef', "daltaoin"]
+                      "mcdftfl*", "mcd2fl", "mcd1fl", "mcoftfl*",
+                      "hdiagf", "mchess", 'moints', 'mocoef', "daltaoin"]
     import glob
     files_to_copy = []
 
@@ -1283,7 +1317,7 @@ def create_jobdir(path, joblist):
     for filec in _files_to_copy:
         files_to_copy.extend([os.path.basename(fn) for fn in glob.glob(os.path.join(path_from_copy, filec))])
 
-    #Need energies for NAC
+    # Need energies for NAC
     try:
         if QMin['calculation'] == 'mcscf':
             parser = colparser_mc(os.path.join(path, 'MOLDEN', 'molden_mo_mc.sp'))
@@ -1293,9 +1327,12 @@ def create_jobdir(path, joblist):
         if QMin['calculation'] == 'mcscf':
             parser = colparser_mc(os.path.join(QMin['newpath'], 'MOLDEN', 'molden_mo_mc.sp'))
         else:
-            parser = colparser(os.path.join(QMin['newpath'], 'MOLDEN', 'molden_mo_mc.sp'), os.path.join(path_from_copy, 'tranls'))
+            parser = colparser(os.path.join(QMin['newpath'], 'MOLDEN', 'molden_mo_mc.sp'),
+                               os.path.join(path_from_copy, 'tranls'))
 
-    _energies = parser.get_H0(filename='%s/mcscfsm'%path_from_copy).diagonal() if QMin['calculation'] == 'mcscf' else parser.get_H0('eci', filename='%s/ciudgsm'%path_from_copy).diagonal()
+    _energies = parser.get_H0(filename='%s/mcscfsm' % path_from_copy).diagonal() if QMin[
+                                                                                        'calculation'] == 'mcscf' else parser.get_H0(
+        'eci', filename='%s/ciudgsm' % path_from_copy).diagonal()
 
     _run_args = []
     subdirs = []
@@ -1316,16 +1353,17 @@ def create_jobdir(path, joblist):
             if 'nac_branch' in jobset[job]:
                 jobset[job]['pairs'] = key
 
-                jobset[job]['energy_pairs'] = [_energies[key[0]-1], _energies[key[1]-1]]
+                jobset[job]['energy_pairs'] = [_energies[key[0] - 1], _energies[key[1] - 1]]
                 if QMin['calculation'] != 'mcscf':
                     files_for_nac = ["civout.drt1", "civfl.drt1",
                                      f'cid1fl.trd{key[0]}to{key[1]}', f'cid2fl.trd{key[0]}to{key[1]}',
                                      f"cid1trfl.FROMdrt1.state{key[0]}TOdrt1.state{key[1]}"]
-                    files_name_final =  ["civout.drt1", "civfl.drt1",
-                                     f'cid1fl.tr', f'cid2fl.tr',
-                                     f"cid1trfl"]
+                    files_name_final = ["civout.drt1", "civfl.drt1",
+                                        f'cid1fl.tr', f'cid2fl.tr',
+                                        f"cid1trfl"]
                 else:
-                    files_for_nac = [f'mcsd1fl.drt1.st{key[0]:02d}-st{key[1]:02d}', f'mcsd2fl.drt1.st{key[0]:02d}-st{key[1]:02d}',
+                    files_for_nac = [f'mcsd1fl.drt1.st{key[0]:02d}-st{key[1]:02d}',
+                                     f'mcsd2fl.drt1.st{key[0]:02d}-st{key[1]:02d}',
                                      f"mcad1fl.drt1.st{key[0]:02d}-st{key[1]:02d}"]
                     files_name_final = [f'cid1fl.tr', f'cid2fl.tr',
                                         f"cid1trfl"]
@@ -1394,13 +1432,14 @@ def screen_jobs(QMin):
     removed_nac_jobs = []
     for i in range(QMin['nstates']):
         if abs(Leigvc[i, i] * Reigvc[i, i]) < screening_param:
-            removed_g_jobs.append(i+1)
+            removed_g_jobs.append(i + 1)
         for j in range(i + 1, QMin['nstates']):
             if abs(Leigvc[i, j] * Reigvc[i, j]) < screening_param and abs(
                     Leigvc[j, i] * Reigvc[j, i]) < screening_param:
                 removed_nac_jobs.append((i + 1, j + 1))
 
     return removed_g_jobs, removed_nac_jobs
+
 
 def create_joblist(QMin, path):
     """
@@ -1430,7 +1469,6 @@ def create_joblist(QMin, path):
 
         nacmap = [d for d in nacmap if d not in removed_nac_jobs]
         gradmap = [d for d in gradmap if d not in removed_g_jobs]
-
 
     joblist = []
 
@@ -1478,7 +1516,7 @@ def colrun(path, QMin):
     os.environ["ARMCI_DEFAULT_SHMMAX"] = "8192"
 
     ict = 4
-    iroot = QMin['nstates'] # Which root to modify : RTOLCI in ciudgin
+    iroot = QMin['nstates']  # Which root to modify : RTOLCI in ciudgin
 
     starttime = datetime.datetime.now()
     sys.stdout.write('START:\t%s\t%s \n' % (path, starttime))
@@ -1536,7 +1574,8 @@ def colrun(path, QMin):
 
             # Open files using 'with' to ensure they are closed properly
             with open(stdoutfilename, 'w') as stdoutfile, open(stderrfilename, 'w') as stderrfile:
-                stringrun = [os.path.join(colpath, 'runc'), '-m', '%s'%(str(QMin['memory'])), '-nproc', '%s'%(str(QMin['ncpu']))]
+                stringrun = [os.path.join(colpath, 'runc'), '-m', '%s' % (str(QMin['memory'])), '-nproc',
+                             '%s' % (str(QMin['ncpu']))]
                 process = sp.run(stringrun, cwd=path, stdout=stdoutfile, stderr=stderrfile, shell=False)
 
                 # Check the return code manually
@@ -1574,11 +1613,13 @@ def colrun(path, QMin):
                     ict = 0
                     endtime = datetime.datetime.now()
                     sys.stdout.write(
-                        'FINISH:\t%s\t%s\tRuntime: %s\tError Code: %i\n' % (path, endtime, endtime - starttime, process.returncode))
+                        'FINISH:\t%s\t%s\tRuntime: %s\tError Code: %i\n' % (
+                            path, endtime, endtime - starttime, process.returncode))
                     sys.stdout.flush()
                     # Finally start parallel calculation
                     if os.path.basename(path) == 'ANION':
-                        sys.stdout.write('\n\n'+'--'*20+'Starting parallel gradient and coupling calculation'+'--'*20+'\n\n')
+                        sys.stdout.write(
+                            '\n\n' + '--' * 20 + 'Starting parallel gradient and coupling calculation' + '--' * 20 + '\n\n')
                         sys.stdout.flush()
                         joblist = create_joblist(QMin, path)
                         _run_args = create_jobdir(path, joblist)
@@ -1600,8 +1641,8 @@ def colrun(path, QMin):
                         if _uroot not in uroots:
                             uroots.append(_uroot)
 
-                if len(uroots)==0:
-                    modify_ciudgin_tol(path, QMin, iroot-1)
+                if len(uroots) == 0:
+                    modify_ciudgin_tol(path, QMin, iroot - 1)
                     iroot -= 1
                 else:
                     for iroot in uroots:
@@ -1618,7 +1659,7 @@ def colrun(path, QMin):
             if 'mcscf_guess' in QMin:
                 try:
                     mocoef_recent = os.path.join(path, 'MOCOEFS', 'mocoef_mc.sp')
-                    shutil.copy(mocoef_recent, os.path.join(path , 'mocoef'))
+                    shutil.copy(mocoef_recent, os.path.join(path, 'mocoef'))
                 except Exception as er:
                     print(f"Failed to move {mocoef_recent}: {er}")
                     traceback.print_exc()
@@ -1631,6 +1672,7 @@ def colrun(path, QMin):
             '''
     return 0
     # Return 0 if everything went fine
+
 
 def run_calc(coords, iter, QMin):
     """
@@ -1649,7 +1691,6 @@ def run_calc(coords, iter, QMin):
     pathNEU = os.path.join(QMin['newpath'], 'NEUTRAL')
     pathAN = os.path.join(QMin['newpath'], 'ANION')
 
-
     try:
         # Take old mocoef as guess!
         if iter > 0 and 'mcscf_guess' in QMin:
@@ -1660,16 +1701,16 @@ def run_calc(coords, iter, QMin):
             print("\nError in initial MCSCF calculation\n")
             sys.exit(111)
 
-        shutil.copy("%s/MOCOEFS/mocoef_mc.sp"%pathMCSCF, "%s/mocoef"%pathNEU)
-        shutil.copy("%s/MOCOEFS/mocoef_mc.sp"%pathMCSCF, "%s/mocoef"%pathAN)
+        shutil.copy("%s/MOCOEFS/mocoef_mc.sp" % pathMCSCF, "%s/mocoef" % pathNEU)
+        shutil.copy("%s/MOCOEFS/mocoef_mc.sp" % pathMCSCF, "%s/mocoef" % pathAN)
 
         # make an old copy
         shutil.copy("%s/MOCOEFS/mocoef_mc.sp" % pathMCSCF, "%s/mocoef.old" % pathSAVE)
         for pathRUN in [pathAN, pathNEU]:
             try:
-                copy_files(os.path.join(pathMCSCF, 'WORK'),os.path.join(pathRUN, 'WORK'))
+                copy_files(os.path.join(pathMCSCF, 'WORK'), os.path.join(pathRUN, 'WORK'))
                 ctrfile = os.path.join(pathRUN, 'control.run')
-                if QMin['calculation'] !='mcscf':
+                if QMin['calculation'] != 'mcscf':
                     keywords(ctrfile, 'mcscf')
                     keywords(ctrfile, 'mcscfden')
             except Exception as e:
@@ -1679,7 +1720,7 @@ def run_calc(coords, iter, QMin):
             errorcode = colrun(pathRUN, QMin)
 
         if iter == 0:
-            if QMin.get('track')=='wfoverlap':
+            if QMin.get('track') == 'wfoverlap':
                 shutil.copy("%s/MOCOEFS/mocoef_mc.sp" % pathMCSCF, "%s/mocoef.wfov.old" % pathSAVE)
 
     except sp.CalledProcessError as e:
@@ -1688,6 +1729,7 @@ def run_calc(coords, iter, QMin):
         exit(911)
 
     return errorcode
+
 
 def print_to_table(title, headers, data, align="center", fname=None):
     """
@@ -1729,6 +1771,7 @@ def print_to_table(title, headers, data, align="center", fname=None):
     else:
         print(table)
 
+
 # Function to calculate the individual gradients for each atom in all directions (x, y, z)
 def collectinfo(_iter, QMin):
     """
@@ -1754,9 +1797,9 @@ def collectinfo(_iter, QMin):
     idx = 0
     for atom in range(len(atom_symbols)):
         G_MCH[idx] = {'x': grad_mat(_grad, _nac, H0, atom, 'x'),
-                       'y': grad_mat(_grad, _nac, H0, atom, 'y'),
-                       'z': grad_mat(_grad, _nac, H0, atom, 'z')}
-        idx +=1
+                      'y': grad_mat(_grad, _nac, H0, atom, 'y'),
+                      'z': grad_mat(_grad, _nac, H0, atom, 'z')}
+        idx += 1
 
     RotMATfile = os.path.join(pathSAVE, "PCAP.RotMatOld.h5")
     RotMATnew = {}
@@ -1784,7 +1827,7 @@ def collectinfo(_iter, QMin):
 
     # generate dets file for WFOVERLAP
     if QMin['symmetry']:
-        if QMin['track'] =='civecs':
+        if QMin['track'] == 'civecs':
             generate_dets_w_sym(QMin)
         else:
             import natorb_utils
@@ -1793,9 +1836,9 @@ def collectinfo(_iter, QMin):
     else:
         generate_dets(QMin)
 
-    if _iter==0:
-        res_state = int(QMin['act_state'][0])-1
-        if QMin.get('track')  == 'dens':
+    if _iter == 0:
+        res_state = int(QMin['act_state'][0]) - 1
+        if QMin.get('track') == 'dens':
             generate_ad_den_files(QMin, RotMATnew)
             os.makedirs(os.path.join(QMin['newpath'], 'TRACK'), exist_ok=True)
             shutil.copy(RotMATfile, os.path.join(QMin['newpath'], 'TRACK', 'ADDENS.h5'))
@@ -1805,7 +1848,7 @@ def collectinfo(_iter, QMin):
     else:
         if QMin.get('track') == 'dens':
             res_state, maxo = tracking_with_ad_dens(QMin, RotMATnew)
-        elif QMin.get('track')  == 'civecs':
+        elif QMin.get('track') == 'civecs':
             res_state, maxo = tracking_with_civectors(QMin, RotMATnew)
         else:
             res_state, maxo = tracking_with_WFOVERLAP(QMin, RotMATnew, lowdinSVD=False)
@@ -1818,24 +1861,25 @@ def collectinfo(_iter, QMin):
             print(f"\n ====> An error occurred in 'collectinfo' module: \n\t{e}")
             traceback.print_exc()
 
-        QMin['act_state']=copy.deepcopy(res_state)
-        res_state =res_state[0]-1
+        QMin['act_state'] = copy.deepcopy(res_state)
+        res_state = res_state[0] - 1
 
     if 'natorb' in QMin:
-        print("\n\n** Printing natural orbitals!\n\n")
+        sys.stdout.write("\n\n** Printing natural orbitals!\n\n")
+        sys.stdout.flush()
         import natorb_utils
         BASFILE = os.path.join(str(QMin['pwd']), 'OPENCAPMD.gbs')
         moldensave = os.path.join(str(QMin['pwd']), 'MOLDEN')
         os.makedirs(moldensave, exist_ok=True)
         geomfile = os.path.join(QMin['newpath'], 'geom')
-        noc = 'mc' if QMin['calculation'] == 'mcscf' else 'ci'
-        fmolden = os.path.join(moldensave, f'molden_no_{noc}_diag.iter%i.state%i.sp'%(_iter, res_state+1))
+        dentype = 'mc' if QMin['calculation'] == 'mcscf' else 'ci'
+        fmolden = os.path.join(moldensave, f'molden_no_{dentype}_diag.iter%i.state%i.sp' % (_iter, res_state + 1))
         try:
-            natorb_utils.natorb(projcap_object, ao_ovlp, RotMATnew, geomfile, QMin, BASFILE, fmolden).print_natorb_molden()
+            natorb_utils.natorb(projcap_object, ao_ovlp, RotMATnew, geomfile, QMin, BASFILE,
+                                fmolden).print_natorb_molden()
         except Exception as e:
             print(f"\n Error occurred while generating natural orbitals :( \n\t{e}")
             traceback.print_exc()
-
 
     with h5py.File(RotMATfile, "a") as f:
         if "Reigvc" in f:
@@ -1853,17 +1897,17 @@ def collectinfo(_iter, QMin):
 
     for idx in range(QMin['natom']):
         gradients.append({'x': grad_all_state[idx]['x'].diagonal().real[res_state],
-                            'y': grad_all_state[idx]['y'].diagonal().real[res_state],
-                            'z': grad_all_state[idx]['z'].diagonal().real[res_state]})
+                          'y': grad_all_state[idx]['y'].diagonal().real[res_state],
+                          'z': grad_all_state[idx]['z'].diagonal().real[res_state]})
         gradients_CAP.append({'x': _just_grad_correct[idx]['x'].diagonal().real[res_state],
                               'y': _just_grad_correct[idx]['y'].diagonal().real[res_state],
                               'z': _just_grad_correct[idx]['z'].diagonal().real[res_state]})
 
-
     ostring = "  %i \t  %16.10f \t  %16.10f \t  %i " % (_iter, H_diag.real[res_state],
-                                                        2.0* H_diag.imag[res_state] , res_state+1)
+                                                        2.0 * H_diag.imag[res_state], res_state + 1)
 
     return gradients, gradients_CAP, ostring, H_diag[res_state]
+
 
 # SBK added this overlap based algorithm.
 def overlap_tracking(QMin, RotMatnew):
@@ -1878,14 +1922,15 @@ def overlap_tracking(QMin, RotMatnew):
         RotMATold['Reigvc'] = f["Reigvc"][:]
         RotMATold['Leigvc'] = f["Leigvc"][:]
 
-
     for lst in (QMin['act_state']):
-        _ovlp = np.array([np.dot(RotMATold['Reigvc'][:, lst-1], RotMatnew['Reigvc'][:, k]) for k in range(QMin['nstates'])])
+        _ovlp = np.array(
+            [np.dot(RotMATold['Reigvc'][:, lst - 1], RotMatnew['Reigvc'][:, k]) for k in range(QMin['nstates'])])
         cur_max = np.where(abs(_ovlp) == abs(_ovlp).max())[0][0]
         maxo = _ovlp[cur_max]
         act_states.append(cur_max + 1)
 
     return act_states, maxo
+
 
 def generate_dets(QMin):
     """
@@ -1926,6 +1971,7 @@ def generate_dets(QMin):
         print("Error Output:\n", e.stderr)
         print("Standard Output:\n", e.stdout)
 
+
 def align_geometry_Kabsch(oldgeom, newgeom, QMin):
     """
     Aligning two sets of points using translation and rotation minimization based on the Kabsch algorithm.
@@ -1943,6 +1989,7 @@ def align_geometry_Kabsch(oldgeom, newgeom, QMin):
         aligned_geom: numpy.ndarray
          New aligned geometry
     """
+
     def centroid(coords):
         """Calculate the centroid of a set of points."""
         return np.mean(coords, axis=0)
@@ -2002,6 +2049,7 @@ def align_geometry_Kabsch(oldgeom, newgeom, QMin):
     print(string)
 
     return aligned_newgeom
+
 
 def setupWFOVERLAPDIR(QMin):
     '''
@@ -2117,11 +2165,12 @@ def run_double_mol(QMin):
     # Get aligned geometry (in each iteration)
     aligned_geom = align_geometry_Kabsch(geoold, geonew, QMin)
     # Create daltaoin backup
-    shutil.copy(os.path.join(QMin['newpath'], 'WORK', 'daltaoin'), os.path.join(QMin['newpath'], 'WORK', 'daltaoin.orig'))
+    shutil.copy(os.path.join(QMin['newpath'], 'WORK', 'daltaoin'),
+                os.path.join(QMin['newpath'], 'WORK', 'daltaoin.orig'))
     # Create daltaoin with new geometry (aligned)
     make_daltaoin(os.path.join(QMin['newpath'], 'WORK'), aligned_geom, QMin)
 
-    command = ['%s/scripts/dalton_double-mol.py' % (str(QMin['wfovdir'])), QMin['newpath'],QMin['oldpath'], 'run']
+    command = ['%s/scripts/dalton_double-mol.py' % (str(QMin['wfovdir'])), QMin['newpath'], QMin['oldpath'], 'run']
     try:
         result = sp.run(command, cwd=pathTRACK, check=True, shell=False,
                         stdout=sp.PIPE, stderr=sp.PIPE, text=True)
@@ -2134,6 +2183,7 @@ def run_double_mol(QMin):
         print("Standard Output:\n", e.stdout)
     os.chdir(prevdir)
     return
+
 
 def runWFOVERLAPS(WORKDIR, wfoverlaps, memory=1000, ncpu=1, DEBUG=False):
     prevdir = os.getcwd()
@@ -2163,11 +2213,13 @@ def runWFOVERLAPS(WORKDIR, wfoverlaps, memory=1000, ncpu=1, DEBUG=False):
     os.chdir(prevdir)
     return runerror
 
+
 def lowdin(S):
     '''Uses Lowdin orthogonalization'''
     _U, _D, _VT = np.linalg.svd(S, full_matrices=True)
     S_ortho = _U @ _VT
     return S_ortho
+
 
 def tracking_with_WFOVERLAP(QMin, RotMATnew, lowdinSVD=False):
     """
@@ -2193,7 +2245,7 @@ def tracking_with_WFOVERLAP(QMin, RotMATnew, lowdinSVD=False):
 
     :rtype: tuple (int, float)
     """
-    #Set up workdir and generate the wfov.out
+    # Set up workdir and generate the wfov.out
     setupWFOVERLAPDIR(QMin)
     pathSAVE = QMin['savedir']
 
@@ -2221,7 +2273,7 @@ def tracking_with_WFOVERLAP(QMin, RotMATnew, lowdinSVD=False):
         allSTATE_ovlp_DIAG = lowdin(allSTATE_ovlp_DIAG)
 
     for lst in (QMin['act_state']):
-        cur_max = np.where(abs(allSTATE_ovlp_DIAG[lst-1, :])==abs(allSTATE_ovlp_DIAG[lst-1, :]).max())[0][0]
+        cur_max = np.where(abs(allSTATE_ovlp_DIAG[lst - 1, :]) == abs(allSTATE_ovlp_DIAG[lst - 1, :]).max())[0][0]
         act_states.append(cur_max + 1)
         maxo = allSTATE_ovlp_DIAG[:, lst - 1][cur_max]
 
@@ -2250,6 +2302,7 @@ def wfoverlap_mat(out, matrix_type, QMin):
     else:
         print("\n==> Wf-Overlap matrix not found!\n\n")
         return None
+
 
 def generate_dets_w_sym(QMin):
     '''Genrates dets file (for symmetry on systems)'''
@@ -2286,6 +2339,7 @@ def generate_dets_w_sym(QMin):
         'FINISH:\t%s\t%s\tRuntime: %s\tMessage: %s\n' % (pathTRACK, endtime, endtime - starttime, 'Generation Done!'))
     sys.stdout.flush()
 
+
 def read_civecs_SD(finp):
     '''Read Ci vectors coeffs and slater determinants'''
     with open(finp, 'r') as f:
@@ -2295,6 +2349,7 @@ def read_civecs_SD(finp):
         key = line.split()[0]
         slaters[key] = [float(i) for i in line.split()[1:]]
     return slaters
+
 
 def generate_civecs_diag(civcectors, eigvector):
     '''Rotates ZO civectors to DIAG'''
@@ -2309,14 +2364,15 @@ def generate_civecs_diag(civcectors, eigvector):
         civectors_diag.append(d_ci)
     return np.asarray(civectors_diag)
 
+
 def _sort_slaterdet_key(QMin, slaterd, slaterdnew):
     for key in slaterd:
         if not slaterdnew.get(key):
-            slaterdnew[key] = [1E-12]*QMin['nstates']
+            slaterdnew[key] = [1E-12] * QMin['nstates']
 
     for key in slaterdnew:
         if not slaterd.get(key):
-            slaterd[key] = [1E-12]*QMin['nstates']
+            slaterd[key] = [1E-12] * QMin['nstates']
 
     civc_renewed = []
     civcnew_renewed = []
@@ -2327,6 +2383,8 @@ def _sort_slaterdet_key(QMin, slaterd, slaterdnew):
     civcnew_renewed = np.asarray(civcnew_renewed)
 
     return civc_renewed, civcnew_renewed
+
+
 def tracking_with_civectors(QMin, RotMATnew):
     '''Tracking with civectors only (assume that MO basis are same in different iterations)'''
     sys.stdout.write("\n\n==> Symmetry is on, hence no WF-OVERLAP is available\n"
@@ -2359,7 +2417,8 @@ def tracking_with_civectors(QMin, RotMATnew):
     civectors_diag_new = generate_civecs_diag(civcnew, _ReigVc_new)
 
     for lst in (QMin['act_state']):
-        allstate_civectors_ovlp = np.array([np.dot(civectors_diag[:, lst-1],civectors_diag_new[:, k]) for k in range(len(_ReigVc_new))])
+        allstate_civectors_ovlp = np.array(
+            [np.dot(civectors_diag[:, lst - 1], civectors_diag_new[:, k]) for k in range(len(_ReigVc_new))])
 
         cur_max = np.where(abs(allstate_civectors_ovlp) == abs(allstate_civectors_ovlp).max())[0][0]
         act_states.append(cur_max + 1)
@@ -2391,7 +2450,8 @@ def generate_dens(QMin, work_dir):
         for file in iwfmt_files:
             os.remove(file)
 
-        pattern_files = glob.glob(os.path.join(work_dir, "*d1fl.*")) + glob.glob(os.path.join(work_dir, "*d1trfl.*")) + glob.glob(os.path.join(work_dir, "aoints"))
+        pattern_files = glob.glob(os.path.join(work_dir, "*d1fl.*")) + glob.glob(
+            os.path.join(work_dir, "*d1trfl.*")) + glob.glob(os.path.join(work_dir, "aoints"))
         for file_path in pattern_files:
             if os.path.isfile(file_path):
                 file_name = os.path.basename(file_path)
@@ -2412,14 +2472,13 @@ def generate_dens(QMin, work_dir):
     run_iwfmt(work_dir, colpath)
 
 
-
 def spectral_norm(A):
     '''Calculates spectral norm of matrix: A'''
-    lambdax, _ = LA.eig(A@A.T)
-    if np.max(lambdax) < 0.0:
-        print(f"Spectral norm {np.max(lambdax)} less than zero encountered!")
-    return np.sqrt(np.max(lambdax))
-
+    lambdas, _ = LA.eig(A @ A.T.conj())
+    lambdamax = lambdas[np.where(abs(lambdas) == np.max(abs(lambdas)))[0][0]]
+    if lambdamax < 0.0:
+        print(f"Spectral norm {lambdamax} less than zero encountered!")
+    return np.sqrt(lambdamax)
 
 def generate_ad_den_files(QMin, RotMATnew, writeTOfile=True):
     '''
@@ -2442,9 +2501,8 @@ def generate_ad_den_files(QMin, RotMATnew, writeTOfile=True):
                           filen=f"{os.path.join(QMin.get('newpath'), 'NEUTRAL', 'WORK')}/{sstring}d1fl.drt1.{ststr}{ststring}.iwfmt")
     dAOneu_new = parser_tmp.mo_coeff @ dAOneu_new @ parser_tmp.mo_coeff.T
 
-
     dm_diag = QMin['1RDM_diag']
-    istate = QMin['act_state'][0]-1
+    istate = QMin['act_state'][0] - 1
     deltaD_new = reduce(np.dot, (dm_diag[istate, istate] - dAOneu_new, RotMATnew['ao_ovlp']))
     k1, w1 = _sort_eigenvectors(*LA.eig(deltaD_new))
 
@@ -2456,7 +2514,6 @@ def generate_ad_den_files(QMin, RotMATnew, writeTOfile=True):
 
     detach_mo_new = w1 @ np.diag(k_detach1) @ w1.T
     attach_mo_new = w1 @ np.diag(k_attach1) @ w1.T
-
 
     RotMATfile = os.path.join(pathSAVE, "PCAP.RotMatOld.h5")
     if writeTOfile:
@@ -2502,24 +2559,24 @@ def tracking_with_ad_dens(QMin, RotMATnew):
     with h5py.File(RotMATfile, "r") as f:
         RotMATold['Reigvc'] = f["Reigvc"][:]
         RotMATold['Leigvc'] = f["Leigvc"][:]
-        attach_mo =  f["attach_mo"][:]
-        detach_mo =  f["detach_mo"][:]
+        attach_mo = f["attach_mo"][:]
+        detach_mo = f["detach_mo"][:]
 
     generate_dens(QMin, os.path.join(QMin.get('newpath'), 'NEUTRAL', 'WORK'))
     parser_tmp = colparser_mc(f"{os.path.join(QMin.get('newpath'), 'CAP_INPS', 'molden_mo_mc.sp')}")
     dAOneu_new = np.zeros(np.shape(parser_tmp.mo_coeff))
 
     sstring = 'mcs' if QMin['calculation'] == 'mcscf' else 'ci'
-    ststring = '01'  if QMin['calculation'] == 'mcscf' else '1'
-    ststr = 'st'  if QMin['calculation'] == 'mcscf' else 'state'
+    ststring = '01' if QMin['calculation'] == 'mcscf' else '1'
+    ststr = 'st' if QMin['calculation'] == 'mcscf' else 'state'
 
     parser_tmp.read_iwfmt(dAOneu_new,
-                         filen=f"{os.path.join(QMin.get('newpath'), 'NEUTRAL', 'WORK')}/{sstring}d1fl.drt1.{ststr}{ststring}.iwfmt")
+                          filen=f"{os.path.join(QMin.get('newpath'), 'NEUTRAL', 'WORK')}/{sstring}d1fl.drt1.{ststr}{ststring}.iwfmt")
     dAOneu_new = parser_tmp.mo_coeff @ dAOneu_new @ parser_tmp.mo_coeff.T
 
     dm_diag = QMin['1RDM_diag']
 
-    maxo =-np.inf
+    maxo = -np.inf
     cur_max = -1
     for istate in range(QMin['nstates']):
         deltaD_new = reduce(np.dot, (dm_diag[istate, istate] - dAOneu_new, RotMATnew['ao_ovlp']))
@@ -2534,11 +2591,10 @@ def tracking_with_ad_dens(QMin, RotMATnew):
         detach_mo_new = w1 @ np.diag(k_detach1) @ w1.T
         attach_mo_new = w1 @ np.diag(k_attach1) @ w1.T
 
-
         ddm_diff = spectral_norm(attach_mo_new - attach_mo - detach_mo_new + detach_mo)
-        if 1.0-0.5*ddm_diff > maxo:
-            cur_max = istate+1
-            maxo = copy.deepcopy(1.0-0.5*ddm_diff)
+        if 1.0 - 0.5 * ddm_diff > maxo:
+            cur_max = istate + 1
+            maxo = copy.deepcopy(1.0 - 0.5 * ddm_diff)
             attach_mo_act_state = copy.deepcopy(attach_mo_new)
             detach_mo_act_state = copy.deepcopy(detach_mo_new)
 
@@ -2595,7 +2651,7 @@ def keywords(QMinFileName, strlook, stringextra=None, keep=False):
 
 
 def print_matrix_table_string(iter, gradients, header, QMin, dictionary=True):
-    table_string = '%s = %s \n' %(header, iter)
+    table_string = '%s = %s \n' % (header, iter)
     table_string += '=' * 61 + '\n'
     headers = ['Atom', 'x', 'y', 'z']
     table_string += '{:6} | {:15} | {:15} | {:15}\n'.format(*headers)
@@ -2620,21 +2676,24 @@ def print_matrix_table_string(iter, gradients, header, QMin, dictionary=True):
     table_string += '=' * 61 + '\n\n'
     return table_string
 
+
 def print_string(info, elements, matrix):
     float_format = "{:12.8f}"
-    ostring = str(info)+"\n"
+    ostring = str(info) + "\n"
     headers = ['Atom', 'X', 'Y', 'Z']
     table_data = []
     for atom_index, atom_matrix in enumerate(matrix, start=1):
         formatted_geom = [float_format.format(_matrix) for _matrix in atom_matrix]
-        table_data.append([elements[atom_index-1]] + formatted_geom)
+        table_data.append([elements[atom_index - 1]] + formatted_geom)
     ostring += tabulate(table_data, headers=headers, tablefmt="pretty")
     return ostring
+
 
 def print_to_file(ostring, pathRUN):
     with open("%s/iteration_details" % pathRUN, "a+") as f:
         f.write(ostring + "\n")
     return
+
 
 def readfile(filename):
     try:
@@ -2645,6 +2704,7 @@ def readfile(filename):
         print('File %s does not exist!' % (filename))
         sys.exit(12)
     return out
+
 
 def generate_restartfiles(QMin, _iter):
     """
@@ -2668,13 +2728,12 @@ def generate_restartfiles(QMin, _iter):
     RotMATnew['Leigvc'] = Leigvc
     RotMATnew['ao_ovlp'] = ao_ovlp
 
-
     RotMATfile = os.path.join(pathSAVE, "PCAP.RotMatOld.h5")
     with h5py.File(RotMATfile, "w") as f:
         f.create_dataset("Reigvc", data=Reigvc)
         f.create_dataset("Leigvc", data=Leigvc)
 
-    #generate_ad_den_files(QMin, RotMATnew)
+    # generate_ad_den_files(QMin, RotMATnew)
 
     # Generate dets.old, mocoef.wfov.old, mocoef.old
     shutil.copy("%s/MOCOEFS/mocoef_mc.sp" % QMin['newpath'], "%s/mocoef.old" % pathSAVE)
@@ -2701,6 +2760,7 @@ def generate_restartfiles(QMin, _iter):
 
     return
 
+
 def cleanupWORK(QMin, path=None):
     pathDIR = QMin.get('oldpath')
     '''
@@ -2714,7 +2774,7 @@ def cleanupWORK(QMin, path=None):
             os.path.join(pathDIR, 'ANION', 'WORK'),
             os.path.join(pathDIR, 'NEUTRAL', 'WORK'),
             os.path.join(pathDIR, 'WORK')
-    ]
+        ]
 
     for checkPath in pathTOcheck:
         if os.path.isdir(checkPath):
@@ -2732,6 +2792,7 @@ def cleanupWORK(QMin, path=None):
             print(f"Directory not found, skipping: {checkPath}")
 
     return
+
 
 def columbusEngine(initial_positions, _iter, QMin):
     """
@@ -2757,12 +2818,13 @@ def columbusEngine(initial_positions, _iter, QMin):
 
         import glob
         capfiles = glob.glob(os.path.join(cap_iwfmtpath, "*iwfmt")) \
-                   +[os.path.join(QMin['newpath'], 'MOLDEN', 'molden_mo_mc.sp')]
+                   + [os.path.join(QMin['newpath'], 'MOLDEN', 'molden_mo_mc.sp')]
 
-        if QMin['calculation']=='mcscf':
+        if QMin['calculation'] == 'mcscf':
             capfiles += glob.glob(os.path.join(cap_iwfmtpath, "mcscfsm"))
         else:
-            capfiles += glob.glob(os.path.join(cap_iwfmtpath, "tranls")) + glob.glob(os.path.join(cap_iwfmtpath, "ciudgsm"))
+            capfiles += glob.glob(os.path.join(cap_iwfmtpath, "tranls")) + glob.glob(
+                os.path.join(cap_iwfmtpath, "ciudgsm"))
 
         for idx, cpfile in enumerate(capfiles):
             try:
@@ -2787,7 +2849,6 @@ def columbusEngine(initial_positions, _iter, QMin):
         print("SEVERE error in COLUMBUS run: Runerror %s: " % runerror)
         sys.exit(911)
 
-
     gradients, gradients_CAP, ostring, eV = collectinfo(_iter, QMin)
     gradients_engine = []
     gradients_CAP_engine = []
@@ -2795,14 +2856,15 @@ def columbusEngine(initial_positions, _iter, QMin):
         gradients_engine.append([_grad['x'], _grad['y'], _grad['z']])
         gradients_CAP_engine.append([_gradCAP['x'], _gradCAP['y'], _gradCAP['z']])
 
-    with open("%s/PCAP.out"%pathDIR, "a+") as f:
+    with open("%s/PCAP.out" % pathDIR, "a+") as f:
         f.write(ostring + "\n")
 
     if 'X' in QMin['atom_symbols']:
         QMin['atom_symbols'].remove('X')
 
     gradients_CAP_engine = np.array(gradients_CAP_engine)
-    data = list(zip(QMin['atom_symbols'], gradients_CAP_engine[:, 0], gradients_CAP_engine[:, 1], gradients_CAP_engine[:, 2]))
+    data = list(
+        zip(QMin['atom_symbols'], gradients_CAP_engine[:, 0], gradients_CAP_engine[:, 1], gradients_CAP_engine[:, 2]))
     print_to_table("CAP gradients (Hartree/Bohr) of resonance state", ["Atom", "X", "Y", "Z"], data, align='right')
 
     QMin['oldpath'] = copy.deepcopy(QMin['newpath'])
@@ -2810,8 +2872,10 @@ def columbusEngine(initial_positions, _iter, QMin):
 
     return eV, np.asarray(gradients_engine)
 
+
 class CustomEngine(geometric.engine.Engine):
     '''A custom engine for geometric'''
+
     def __init__(self, molecule, QMin):
         self.mol = molecule
         self.rundir = QMin['pwd']
@@ -2839,7 +2903,6 @@ class CustomEngine(geometric.engine.Engine):
 
         self.qmin['newgeom'] = copy.deepcopy(coords)
 
-
         starttime = datetime.datetime.now()
 
         print_to_file("\n\nCOLUMBUS Solver run: %i" % self._iter, self.rundir)
@@ -2852,7 +2915,8 @@ class CustomEngine(geometric.engine.Engine):
 
         data = list(zip(self.qmin['act_state'], [energy_complex]))
         print_to_table("Projected CAP generated complex energies (Hartree)"
-                       , ["Root", "Complex energies (Re, Im)"], data, fname=os.path.join(self.rundir, 'iteration_details'))
+                       , ["Root", "Complex energies (Re, Im)"], data,
+                       fname=os.path.join(self.rundir, 'iteration_details'))
         data = list(zip(self.mol.elem, gradient[:, 0], gradient[:, 1], gradient[:, 2]))
         print_to_table("Gradients (Hartree/Bohr)", ["Atom", "X", "Y", "Z"],
                        data, fname=os.path.join(self.rundir, 'iteration_details'), align='right')
@@ -2863,6 +2927,7 @@ class CustomEngine(geometric.engine.Engine):
         self._iter += 1
         self.qmin['iter'] = self._iter
         return {'energy': energy, 'gradient': gradient.ravel()}
+
 
 def BernySolver(engine, QMin):
     '''Berny interface to columbus-opencap engine'''
@@ -2876,7 +2941,6 @@ def BernySolver(engine, QMin):
 
     QMin['oldgeom'] = QMin.get('oldgeom', None)
     QMin['newgeom'] = QMin.get('newgeom', None)
-
 
     while True:
         coords = np.array([coord for _, coord in _atoms])
@@ -2911,7 +2975,7 @@ def BernySolver(engine, QMin):
         endtime = datetime.datetime.now()
         print_to_file("\nElapsed time (hh:mm:ss) ==> %s\n\n" % (endtime - starttime), pathRUN)
 
-        _iter +=1
+        _iter += 1
         QMin['iter'] = _iter
         _atoms, _lattice = yield energy, gradients
 
@@ -2979,6 +3043,7 @@ def checkpath(path, aFile=False, aDIR=True):
         print(f"The path {path} does not exist.")
     return False
 
+
 def read_optking_params(QMin):
     """
     Read optking.params file in PWD in case optking optimizer is used
@@ -3017,6 +3082,7 @@ def read_optking_params(QMin):
                     print(f"Line format error: {line} in optking.params file!")
     return optking_extras
 
+
 def optkingSolver(engine, QMin):
     '''Optking interface to columbus-opencap engine'''
     _iter = 0
@@ -3032,15 +3098,15 @@ def optkingSolver(engine, QMin):
     atomic_numbers = [qcel.periodictable.to_Z(symbol) for symbol in QMin['atom_symbols']]
     geometry = np.column_stack((atomic_numbers, QMin['coords'] / ANG_TO_BOHR))
     mol = qcel.models.Molecule.from_data(geometry, dtype="numpy")
-    conv_type = QMin.get('conv') or "gau_tight" # gau_tight is the default choice
-    optking_options = {"g_convergence" : conv_type,
+    conv_type = QMin.get('conv') or "gau_tight"  # gau_tight is the default choice
+    optking_options = {"g_convergence": conv_type,
                        "opt_coordinates": "both"}
 
     try:
         optking_options_extra = read_optking_params(QMin)
         optking_options.update(optking_options_extra)
     except OSError as e:
-        print('Reading of optking.params returned:\n\t%s'%e)
+        print('Reading of optking.params returned:\n\t%s' % e)
 
     opt = optking.CustomHelper(mol, optking_options)
 
@@ -3052,9 +3118,9 @@ def optkingSolver(engine, QMin):
         if QMin['newgeom'] is not None:
             QMin['oldgeom'] = copy.deepcopy(QMin['newgeom'])
         else:
-            QMin['oldgeom'] = copy.deepcopy( QMin['coords'] )
+            QMin['oldgeom'] = copy.deepcopy(QMin['coords'])
 
-        QMin['newgeom'] = copy.deepcopy( QMin['coords'] )
+        QMin['newgeom'] = copy.deepcopy(QMin['coords'])
 
         starttime = datetime.datetime.now()
         print_to_file("\n\nCOLUMBUS Solver run: %i" % _iter, pathRUN)
@@ -3063,7 +3129,7 @@ def optkingSolver(engine, QMin):
         print_to_table("Position", ["Atom", "X", "Y", "Z"],
                        data, fname=os.path.join(pathRUN, 'iteration_details'), align='right')
 
-        E, gX = engine( QMin['coords'] , _iter, QMin)
+        E, gX = engine(QMin['coords'], _iter, QMin)
         opt.E = np.real(E)
         opt.gX = gX
 
@@ -3075,7 +3141,7 @@ def optkingSolver(engine, QMin):
         opt.take_step()
         conv = opt.test_convergence()
 
-        #Update coords for the next run!
+        # Update coords for the next run!
         QMin['coords'] = copy.deepcopy(opt.geom)
 
         data = list(zip(QMin['act_state'], [E]))
@@ -3096,9 +3162,10 @@ def optkingSolver(engine, QMin):
             print("Optimization SUCCESS after %i iterations:" % (step + 1))
             break
     else:
-        print("Optimization FAILURE (iteration: %i)\n" %(step + 1))
+        print("Optimization FAILURE (iteration: %i)\n" % (step + 1))
 
     return opt.geom
+
 
 def _build_QMin(QMin):
     '''Reads template, resources file and builds QMin dictionary'''
@@ -3139,19 +3206,18 @@ def _build_QMin(QMin):
             QMin[key] = []
         elif key == 'natorb':
             QMin[key] = []
-        elif key=='maxsqnorm':
+        elif key == 'maxsqnorm':
             QMin[key] = float(value)
-        elif key.lower()== 'symmetry':
+        elif key.lower() == 'symmetry':
             QMin[key] = True
-        elif key.lower()=='track':
+        elif key.lower() == 'track':
             if value:
-                QMin[key]=value
-        elif key.lower()=='screening':
+                QMin[key] = value
+        elif key.lower() == 'screening':
             QMin[key] = float(value)
 
         if key in QMin:
             string += f"\t{key}: {QMin[key]}\n"
-
 
     for line in resources:
         # Clean up the line and split it
@@ -3167,6 +3233,8 @@ def _build_QMin(QMin):
         elif key == 'scratchdir':
             QMin[key] = os.path.abspath(value)
         elif key == 'wfoverlap':
+            QMin[key] = os.path.abspath(value)
+        elif key == 'wfovdir':
             QMin[key] = os.path.abspath(value)
         elif key == 'memory':
             QMin[key] = int(value)
@@ -3191,7 +3259,7 @@ def _build_QMin(QMin):
             QMin[key] = float(value)
         elif key == 'deltae':
             QMin[key] = float(value)
-        elif key== 'superweakdih':
+        elif key == 'superweakdih':
             QMin[key] = True
         elif key == 'inputdir':
             QMin[key] = os.path.abspath(value)
@@ -3206,23 +3274,25 @@ def _build_QMin(QMin):
             sys.exit("Error: Columbus path not found.")
 
     if 'wfoverlap' in QMin:
-        _pathbin = os.path.normpath(QMin['wfoverlap'])
-        _pathbin = os.path.dirname(os.path.dirname(_pathbin))
-        QMin['wfovdir'] = os.path.join(_pathbin, 'wfoverlap')
-        if not checkpath(QMin['wfovdir'], aDIR=True):
-            sys.exit("Error: WFOverLap directory not found.")
-        if not checkpath(QMin['wfoverlap'], aFile=True):
-            sys.exit("Error: wfoverlap.x file not found.")
+        if not QMin.get('wfovdir'):
+            _pathbin = os.path.normpath(QMin['wfoverlap'])
+            _pathbin = os.path.dirname(os.path.dirname(_pathbin))
+            QMin['wfovdir'] = os.path.join(_pathbin, 'wfoverlap')
+            if not checkpath(QMin['wfovdir'], aDIR=True):
+                sys.exit("Error: WFOverLap directory not found.")
+            if not checkpath(QMin['wfoverlap'], aFile=True):
+                sys.exit("Error: wfoverlap.x file not found.")
 
     for key in ['wfoverlap', 'wfovdir', 'columbus']:
         if key in QMin:
             string += f"\t{key}: {QMin[key]}\n"
 
     QMin['track'] = 'dens' if QMin.get('symmetry') else QMin.get('track', 'wfoverlap')
-    string +=f"\t{'track'}: {QMin['track']}\n"
+    string += f"\t{'track'}: {QMin['track']}\n"
     string_extra = f"\n\n*** Tracking is done by '{QMin.get('track')}' and symmetry is {str(QMin.get('symmetry'))}\n"
     if not QMin.get('symmetry'):
-        string_extra += f"If symmetry should be on, cancel the job and choose following keywords in \n{template_path}\n\n {'symmetry'}\n {'track '}{'dens'}/{'civecs'} (any one)\n\n"
+        string_extra += f"If symmetry should be on, cancel the job and choose following " \
+                        f"keywords in \n{template_path}\n\n {'symmetry'}\n {'track '}{'dens'}/{'civecs'} (any one)\n\n"
 
     string += "\n"
     print_to_file(string, QMin['pwd'])
@@ -3231,12 +3301,13 @@ def _build_QMin(QMin):
     keys_needed = ['nstates', 'eta_opt', 'cap_x', 'cap_y', 'cap_z']
     for key in keys_needed:
         if not QMin.get(key):
-            print(f'Specify {key} in MOLCAS.template')
-            sys.exit()
+            sys.exit(f'Specify {key} in MOLCAS.template')
     return QMin
+
 
 class CustomFormatter(logging.Formatter):
     '''A custom logger for berny interface'''
+
     def __init__(self, fmt=None, datefmt=None, style='%', min_time_difference=10):
         super().__init__(fmt=fmt, datefmt=datefmt, style=style)
         self.previous_time = None
@@ -3253,19 +3324,22 @@ class CustomFormatter(logging.Formatter):
 
         formatted_message = super().format(record)
         if current_time_str:
-            return f"\n\n{'='*80}\n\n{current_time_str} - {record.name} - {record.levelname} - {formatted_message}"
+            return f"\n\n{'=' * 80}\n\n{current_time_str} - {record.name} - {record.levelname} - {formatted_message}"
         else:
             return f"{formatted_message}"
 
+
 QMin = {}
+
+
 def main():
     global QMin
 
-    #Initialize some variables
+    # Initialize some variables
     columbus = os.environ.get('COLUMBUS')
-    memory = 8000 # MB
+    memory = 8000  # MB
     ncpu = 1
-    #=============================
+    # =============================
 
     QMin['pwd'] = str(sys.argv[1])
     print_to_file("\nSimulation submission path:\n %s" % QMin['pwd'], QMin['pwd'])
@@ -3285,22 +3359,21 @@ def main():
     QMin['gradientrms'] = 3.00E-04
     QMin['stepmax'] = 1.80E-03
     QMin['steprms'] = 1.20E-03
-    QMin['deltae'] = 1.00e-06
+    QMin['deltae'] = 1.00e-05
     QMin['superweakdih'] = False
     QMin['symmetry'] = False
 
-    #=============================
-    #Read COLUMBUS.template/resources inputs
+    # =============================
+    # Read COLUMBUS.template/resources inputs
     QMin = _build_QMin(QMin)
     if QMin['symmetry']:
         if QMin.get('optimizer') != 'optking':
             QMin['optimizer'] = 'optking'
             print('\n\n*** Warning optimizer is set to optking when symmetry is on. \n\n')
 
-
     if 'restart' in QMin:
         geomfile = "%s/geom.restart" % QMin['pwd']
-        print_to_file("\n\n This is a restart job reading: %s\n\n"%geomfile, QMin['pwd'])
+        print_to_file("\n\n This is a restart job reading: %s\n\n" % geomfile, QMin['pwd'])
     else:
         geomfile = "%s/geom" % QMin['pwd']
 
@@ -3309,14 +3382,13 @@ def main():
     QMin['natom'] = len(atom_symbols)
     molecule = geometric.molecule.Molecule()
     molecule.elem = [elem for elem in atom_symbols]
-    molecule.xyzs = [initial_positions/ANG_TO_BOHR]
+    molecule.xyzs = [initial_positions / ANG_TO_BOHR]
     QMin['atom_symbols'] = molecule.elem
-    #=============================
-
+    # =============================
 
     # Now exceute the external optimizers
 
-    if QMin.get('optimizer')=='berny':
+    if QMin.get('optimizer') == 'berny':
         logger = logging.getLogger('Columbus_pyBerny_logger')
         if 'debug' in QMin:
             logger.setLevel(logging.DEBUG)
@@ -3327,7 +3399,6 @@ def main():
         handler = logging.FileHandler('berny.log')
         handler.setFormatter(formatter)
         logger.addHandler(handler)
-
 
         conv_params = {
             'gradientmax': QMin['gradientmax'],  # Eh/Bohr
@@ -3352,7 +3423,10 @@ def main():
         # Print the final geometry
         geom_final = np.array([coord for _, coord in geom_final])
 
-        print(print_string("Optimized positions of the atoms:", atom_symbols, geom_final))
+        data = list(zip(QMin['atom_symbols'], geom_final[:, 0] / ANG_TO_BOHR, geom_final[:, 1] / ANG_TO_BOHR,
+                        geom_final[:, 2] / ANG_TO_BOHR))
+        print_to_table("\n\nOptimized positions of the atoms (Angstrom)", ["Atom", "X", "Y", "Z"],
+                       data, fname=os.path.join(QMin['pwd'], 'iteration_details'), align='right')
 
     elif QMin.get('optimizer') == 'geometric':
 
@@ -3363,16 +3437,22 @@ def main():
                        'drms', QMin['steprms'],
                        'dmax', QMin['stepmax']]
 
-        outfile = os.path.join(QMin['pwd'],'QM',"geomTRIC.log")
+        outfile = os.path.join(QMin['pwd'], "geomeTRIC.log")
         with open(outfile, "w+") as _outfile:
-            m = geometric.optimize.run_optimizer(customengine=COLUMBUSengine, converge=conv_params,check=1, input=_outfile.name)
+            m = geometric.optimize.run_optimizer(customengine=COLUMBUSengine, converge=conv_params, check=1,
+                                                 input=_outfile.name)
 
-        print(print_string("Optimized positions of the atoms (Angstrom):", atom_symbols, m.xyzs[-1]))
+        data = list(zip(atom_symbols, m.xyzs[-1][:, 0], m.xyzs[-1][:, 1], m.xyzs[-1][:, 2]))
+        print_to_table("\n\nOptimized positions of the atoms (Angstrom)", ["Atom", "X", "Y", "Z"],
+                       data, fname=os.path.join(QMin['pwd'], 'iteration_details'), align='right')
 
     elif QMin.get('optimizer') == 'optking':
         geom_final = optkingSolver(columbusEngine, QMin)
+        data = list(zip(QMin['atom_symbols'], geom_final[:, 0] / ANG_TO_BOHR, geom_final[:, 1] / ANG_TO_BOHR,
+                        geom_final[:, 2] / ANG_TO_BOHR))
+        print_to_table("\n\nOptimized positions of the atoms (Angstrom)", ["Atom", "X", "Y", "Z"],
+                       data, fname=os.path.join(QMin['pwd'], 'iteration_details'), align='right')
 
-        print(print_string("Optimized positions of the atoms (Angstrom):", atom_symbols, geom_final))
 
 if __name__ == "__main__":
     main()
